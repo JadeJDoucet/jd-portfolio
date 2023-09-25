@@ -1,23 +1,23 @@
 import './App.css';
 import '@mantine/core/styles.css';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import Layout from './Layout';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
-    <div className="App">
-      <header className="app-header">
+    <Router>
+      <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="projects" element={<Projects />} />
-          {/* <Route path="/" element={<Layout />}>
-            <Route path="about" element={<About />} />
-            <Route path="dashboard" element={<Dashboard />} />
-          </Route> */}
+          {/* <Route path="about" element={<About />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </header>
-    </div>
+      </Layout>
+    </Router>
   );
 }
 

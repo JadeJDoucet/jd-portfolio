@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { MantineProvider } from '@mantine/core';
-import { BrowserRouter } from 'react-router-dom';
 // TODO: import theme from theme.ts
 
 const root = ReactDOM.createRoot(
@@ -13,9 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <MantineProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </MantineProvider>
   </React.StrictMode>
 );
