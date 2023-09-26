@@ -1,44 +1,38 @@
 import React from 'react';
-import { Container, Grid, Paper, Text, Button } from '@mantine/core';
+import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { ENavigationOptions } from '../types';
 import classes from './Home.module.css';
 
 const Home: React.FC = () => {
   return (
-    <Container
-      style={{
-        background: 'linear-gradient(45deg, #1e5799, #2989d8)',
-      }}
-    >
+    <Container>
       <Grid gutter="md">
-        <Grid.Col span="auto">
-          <Paper shadow="xs" className={classes.paper}>
-            <Text size="xl" mb={20}>
-              Welcome, Adventurer
-            </Text>
-            <Button
-              fullWidth
-              size="lg"
-              variant="gradient"
-              radius="xl"
-              style={{ fontWeight: 700 }}
-              mb={20}
-              to={ENavigationOptions.PROJECTS}
-              component={Link}
-            >
-              Explore My Work
-            </Button>
-            <Button
-              fullWidth
-              size="lg"
-              variant="outline"
-              radius="xl"
-              style={{ fontWeight: 700 }}
-            >
-              Contact Me
-            </Button>
-          </Paper>
+        <Grid.Col span="auto" className={classes.leftColumn}>
+          <Title order={1} className={classes.greeting}>
+            Welcome, Adventurer
+          </Title>
+          <Button
+            className={classes.button}
+            component={Link}
+            mb={20}
+            radius="xl"
+            size="lg"
+            to={ENavigationOptions.PROJECTS}
+            variant="filled"
+          >
+            Explore My Work
+          </Button>
+          <Button
+            className={classes.button}
+            component={Link}
+            radius="xl"
+            size="lg"
+            to={ENavigationOptions.CONTACT}
+            variant="filled"
+          >
+            Contact Me
+          </Button>
         </Grid.Col>
         <Grid.Col span="auto">
           <div

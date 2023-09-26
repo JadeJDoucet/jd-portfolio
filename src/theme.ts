@@ -17,9 +17,20 @@ export default createTheme({
   colors: {
     primary,
   },
+
   defaultGradient: {
     from: primary[4],
     to: primary[8],
     deg: 45,
+  },
+
+  shadows: {
+    md: 'rgba(255, 255, 255, 0.5) 0px 0px 10px',
+  },
+
+  primaryColor: 'primary',
+
+  headings: {
+    fontWeight: '700',
   },
 });
