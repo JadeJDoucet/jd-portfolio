@@ -37,7 +37,7 @@ const Home: React.FC = () => {
         </Grid.Col>
         <Grid.Col span="auto">
           <div className={classes.rightColumnContent}>
-            <div className={classes.imageContainer}>
+            <div className={classes.portraitWrapper}>
               <div className={classes.astronaut}>
                 <img
                   src="/images/astronaut.png"
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
                   className={classes.front}
                 />
                 <img
-                  src="/images/astronaut.png"
+                  src="/images/space-wallpaper.png"
                   alt="portrait"
                   className={classes.back}
                 />

@@ -1,58 +1,47 @@
 .astronaut {
-  width: 100%;
-  max-width: 100%;
+  width: 600px;
   height: auto;
   transition: transform 0.5s ease;
+  transform-style: preserve-3d;
   perspective: 1000px; /* Add perspective to the container */
+  transform: rotateY(var(--rotate-y, 0));
+  transform-origin: center;
+  height: 600px;
 }
 
 .front,
 .back {
-  border-radius: 50%;
-  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.5);
   width: 100%;
   max-width: 600px;
-}
-
-.front {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.5);
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  backface-visibility: hidden;
   transform: rotateY(0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center; /* Set the pivot point to the center */
 }
 
 .back {
   transform: rotateY(180deg);
+  background-color: #f0f0f0; /* Adjust background color for the back of the card */
 }
 
 /* On hover, rotate the astronaut to reveal the back image */
-.astronaut:hover .front {
+.astronaut:hover {
   transform: rotateY(180deg);
 }
 
-.astronaut:hover .back {
-  transform: rotateY(0deg);
+.portraitWrapper:hover {
+  --rotate-y: 180deg;
 }
 
-/* Hide the back image by default */
-.back {
-  display: none;
-}
-
-/* Display the back image when hovering on the astronaut */
-.astronaut:hover .back {
-  display: block;
-}
-/* Hide the front image when hovering on the astronaut */
-.astronaut:hover .back {
-  display: none;
-}
-
-/* Add a smooth transition for displaying the back image */
-.back {
-  transition: opacity 0.5s ease;
-  opacity: 0;
-}
-
-.astronaut:hover .back {
-  opacity: 1;
+.portraitWrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .button {
@@ -106,5 +95,10 @@
     letter-spacing: 1px;
     line-height: 2.5rem;
     text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .astronaut {
+    width: 250px;
+    height: 250px;
   }
 }
