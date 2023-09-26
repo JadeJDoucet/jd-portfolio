@@ -13,6 +13,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
 
   const location = useLocation();
   console.log(location.pathname);
+  // Take the image I just downloaded with the mountains, split the second mountains to create parallax
 
   return (
     <Container
@@ -21,6 +22,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
         backgroundImage: 'url(/images/space-wallpaper.png)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        height: '100%',
       }}
     >
       <header style={{ padding: '20px 0' }}>
@@ -84,7 +86,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
       </header>
       <main>{children}</main>
       <footer
-        style={{ marginTop: '40px', textAlign: 'center', color: 'white' }}
+        style={{ marginTop: '60px', textAlign: 'center', color: 'white' }}
       >
         <Text size="sm">
           © {new Date().getFullYear()} <i>JD Development & Design</i>

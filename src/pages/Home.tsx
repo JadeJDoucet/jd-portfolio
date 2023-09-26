@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { ENavigationOptions } from '../types';
 import classes from './Home.module.css';
 
+/* TODO: generate rocket image with ai gen, shoot rocket up screen from bottom on button press :) */
+
 const Home: React.FC = () => {
   return (
     <Container>
@@ -69,7 +71,7 @@ const Home: React.FC = () => {
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
-              Frontend / Mobile / Full-Stack Developer
+              Frontend / Mobile / Full-Stack Engineer
             </Text>
           </div>
         </Grid.Col>
