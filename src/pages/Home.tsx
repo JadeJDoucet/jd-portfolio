@@ -3,7 +3,6 @@ import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { ENavigationOptions } from '../types';
 import classes from './Home.module.css';
-
 /* TODO: generate rocket image with ai gen, shoot rocket up screen from bottom on button press :) */
 
 const Home: React.FC = () => {
@@ -37,23 +36,21 @@ const Home: React.FC = () => {
           </Button>
         </Grid.Col>
         <Grid.Col span="auto">
-          <div
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
-              padding: 20,
-              borderRadius: 10,
-              textAlign: 'center',
-            }}
-          >
-            <img
-              src="/images/astronaut.png"
-              alt="portrait"
-              style={{
-                width: '100%',
-                borderRadius: '50%',
-                boxShadow: '0px 0px 30px rgba(255, 255, 255, 0.5)',
-              }}
-            />
+          <div className={classes.rightColumnContent}>
+            <div className={classes.imageContainer}>
+              <div className={classes.astronaut}>
+                <img
+                  src="/images/astronaut.png"
+                  alt="portrait"
+                  className={classes.front}
+                />
+                <img
+                  src="/images/astronaut.png"
+                  alt="portrait"
+                  className={classes.back}
+                />
+              </div>
+            </div>
             <Text
               size="lg"
               style={{
