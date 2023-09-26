@@ -1,12 +1,12 @@
 import React, { PropsWithChildren } from 'react';
-import { Container, Paper, Text, Button } from '@mantine/core';
+import { Container, Text, Button } from '@mantine/core';
 import { ENavigationOptions } from './types';
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // This enables smooth scrolling
+      behavior: 'smooth',
     });
   };
 
@@ -79,13 +79,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
         <Text size="sm">
           © {new Date().getFullYear()} <i>JD Development & Design</i>
         </Text>
-        <Button
-          size="sm"
-          variant="gradient"
-          gradient={{ from: 'blue', to: 'cyan' }}
-          style={{ marginTop: '10px' }}
-          onClick={scrollToTop}
-        >
+        <Button size="sm" variant="gradient" my={10} onClick={scrollToTop}>
           Back to Top
         </Button>
       </footer>

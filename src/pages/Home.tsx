@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Grid, Paper, Text, Button } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { ENavigationOptions } from '../types';
+import classes from './Home.module.css';
 
 const Home: React.FC = () => {
   return (
@@ -12,30 +13,28 @@ const Home: React.FC = () => {
     >
       <Grid gutter="md">
         <Grid.Col span="auto">
-          <Paper
-            shadow="xs"
-            style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
-          >
-            <Text size="xl" style={{ marginBottom: 20 }}>
+          <Paper shadow="xs" className={classes.paper}>
+            <Text size="xl" mb={20}>
               Welcome, Adventurer
             </Text>
             <Button
+              fullWidth
               size="lg"
               variant="gradient"
-              gradient={{ from: 'blue', to: 'cyan' }}
               radius="xl"
-              style={{ fontWeight: 700, width: '100%', marginBottom: 20 }}
+              style={{ fontWeight: 700 }}
+              mb={20}
               to={ENavigationOptions.PROJECTS}
               component={Link}
             >
               Explore My Work
             </Button>
             <Button
+              fullWidth
               size="lg"
               variant="outline"
-              color="cyan"
               radius="xl"
-              style={{ fontWeight: 700, width: '100%' }}
+              style={{ fontWeight: 700 }}
             >
               Contact Me
             </Button>
