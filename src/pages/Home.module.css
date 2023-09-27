@@ -1,4 +1,7 @@
-.astronaut {
+/**
+* Avatar + Animation 
+*/
+.avatar {
   width: 600px;
   height: auto;
   transition: transform 0.5s ease;
@@ -30,8 +33,8 @@
   background-color: #f0f0f0; /* Adjust background color for the back of the card */
 }
 
-/* On hover, rotate the astronaut to reveal the back image */
-.astronaut:hover {
+/* On hover, rotate the avatar to reveal the back image */
+.avatar:hover {
   transform: rotateY(180deg);
 }
 
@@ -43,6 +46,10 @@
   display: flex;
   justify-content: center;
 }
+
+/**
+* Main styles
+*/
 
 .button {
   box-shadow: rgb(255, 255, 255) 0px 0px 10px;
@@ -97,7 +104,7 @@
     text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.5);
   }
 
-  .astronaut {
+  .avatar {
     width: 250px;
     height: 250px;
   }

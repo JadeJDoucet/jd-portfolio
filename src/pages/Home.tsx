@@ -38,7 +38,7 @@ const Home: React.FC = () => {
         <Grid.Col span="auto">
           <div className={classes.rightColumnContent}>
             <div className={classes.portraitWrapper}>
-              <div className={classes.astronaut}>
+              <div className={classes.avatar}>
                 <img
                   src="/images/astronaut.png"
                   alt="portrait"
