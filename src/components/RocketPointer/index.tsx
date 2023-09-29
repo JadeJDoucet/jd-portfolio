@@ -10,7 +10,7 @@ interface IRocketPointer {
   contactRef: React.RefObject<HTMLLIElement>;
 }
 
-const ROCKET_SIZE = 32;
+const ROCKET_SIZE = 75;
 
 const RocketPointer: React.FC<IRocketPointer> = ({
   projectsRef,
@@ -35,10 +35,10 @@ const RocketPointer: React.FC<IRocketPointer> = ({
       // Set the position of the rocket image to follow the cursor
       if (rocketElement) {
         rocketElement.style.left = `${
-          mouseX - rocketElement.clientWidth / 2
+          mouseX - rocketElement.clientWidth / 2 + ROCKET_SIZE / 6.5
         }px`;
         rocketElement.style.top = `${
-          mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE + 7
+          mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE / 1.5
         }px`;
       }
     };
@@ -71,8 +71,8 @@ const RocketPointer: React.FC<IRocketPointer> = ({
       setStyle((prev) => ({
         ...prev,
         justifySelf: 'flex-end',
-        left: `${navItemRect.left + ROCKET_SIZE / 2}px`,
-        top: `${navItemRect.top + ROCKET_SIZE}px`,
+        left: `${navItemRect.left + ROCKET_SIZE / 6}px`,
+        top: `${navItemRect.top + ROCKET_SIZE / 2}px`,
       }));
     }
   }, [location.pathname, contactRef, projectsRef]);

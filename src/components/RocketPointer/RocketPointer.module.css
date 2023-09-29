@@ -6,5 +6,15 @@
 }
 
 .rocketWrapper img {
-  transform: rotateZ(-44deg);
+  animation: floatAnimation 3s ease-in-out infinite; /* Adjust the duration and timing as needed */
+}
+
+@keyframes floatAnimation {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px); /* Adjust the floating height */
+  }
 }
