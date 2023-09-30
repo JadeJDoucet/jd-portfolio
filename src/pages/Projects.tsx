@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Anchor, Container, Image, Paper, Tabs, Text } from '@mantine/core';
 import classes from './Projects.module.css';
 
@@ -13,7 +13,7 @@ enum EProjects {
 const PROJECT_DESCRIPTIONS = {
   [EProjects.PREEM]: (
     <Text className={classes.description}>
-      As one of three frontend/mobile engineers at this start-up, I played a
+      As one of three frontend / mobile engineers at this start-up, I played a
       significant role in architecting and constructing the&nbsp;
       <Anchor
         href="https://apps.apple.com/us/app/preem/id6443659970"
@@ -34,13 +34,13 @@ const PROJECT_DESCRIPTIONS = {
   ),
   [EProjects.ALFI]: (
     <Text className={classes.description}>
-      AI and Machine Learning was the most interesting facet of ALFI.
-      Interfacing with API's via React Native, React, and Kotlin enabled us to
+      AI and Machine Learning were the most interesting facets of ALFI.
+      Interfacing with APIs via React Native, React, and Kotlin enabled us to
       use Edge Computing to push the capabilities of React Native to deliver
-      targeted ads to the correct audiences -- all from the back of a ride
-      share. Re-architecting the Web Portal where advertisers created marketing
-      campaigns as well as architecting a new mobile application is where I
-      played a large role in ALFI",
+      targeted ads to the correct audiences - all from the back of a rideshare.
+      Accompanying the Android application, I played a large role in various
+      iterations on the web platform where advertisers would create marketing
+      campaigns with their choice of ad targeting.
     </Text>
   ),
   [EProjects.SCANNAR]: (
@@ -62,38 +62,9 @@ const PROJECT_DESCRIPTIONS = {
   ),
 };
 
-/*
-  TODO: Tabs for each one
-                          Preem | ALFI | ScannAr
-                          Sep 2022 - Aug 2023
-                           lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                           lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lo
-                           rem ipsum lorem ipsum lorem ipsum lorem ipsum
-                          
-
-*/
-
 const Projects: React.FC = () => {
   return (
     <Container className={classes.container}>
-      {/* <SegmentedControl
-        orientation="vertical"
-        fullWidth
-        size="md"
-        data={[
-          {
-            label: 'Preem Inc - Social Cycling Platform',
-            value: EProjects.PREEM,
-          },
-          { label: 'ALFI - AI/ML Ad Serving', value: EProjects.ALFI },
-          {
-            label: 'ScannAR - Augmented Reality Tagging System',
-            value: EProjects.SCANNAR,
-          },
-        ]}
-        value={selectedProject}
-        onChange={(value) => setSelectedProject(value as EProjects)}
-      /> */}
       <Paper className={classes.contentWrapper} shadow="xl" radius="md">
         <Tabs
           defaultValue={EProjects.PREEM}
