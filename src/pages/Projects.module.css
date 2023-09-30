@@ -1,5 +1,25 @@
 .container {
-  margin-top: 10%;
-  /* height: 60vh; */
-  height: 30vh;
+  margin-top: 15%;
+  width: 75%;
+}
+
+.contentWrapper {
+  background-color: rgba(47, 41, 99, 0.77);
+  padding: 5px 20px 20px;
+  color: var(--mantine-color-white);
+}
+
+.date {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.description {
+  font-weight: 500;
+}
+
+.description a {
+  color: var(--mantine-color-white);
+  text-decoration: underline;
 }

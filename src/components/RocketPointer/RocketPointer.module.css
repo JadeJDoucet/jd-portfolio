@@ -6,7 +6,7 @@
 }
 
 .rocketWrapper img {
-  animation: floatAnimation 3s ease-in-out infinite; /* Adjust the duration and timing as needed */
+  animation: floatAnimation 3s ease-in-out infinite; /* Adjust the duration and timing */
 }
 
 @keyframes floatAnimation {
