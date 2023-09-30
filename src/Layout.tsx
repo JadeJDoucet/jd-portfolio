@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Text, Button } from '@mantine/core';
+import { Container, Text, Button, Anchor } from '@mantine/core';
 
 import RocketPointer from './components/RocketPointer';
 import { ENavigationOptions } from './types';
@@ -57,13 +57,13 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
             {location.pathname !== '/' && (
               <>
                 <li style={{ marginRight: 20 }}>
-                  <a href={ENavigationOptions.HOME}>Home</a>
+                  <Anchor href={ENavigationOptions.HOME}>Home</Anchor>
                 </li>
                 <li style={{ marginRight: 20 }} ref={projectsRef}>
-                  <a href={ENavigationOptions.PROJECTS}>Projects</a>
+                  <Anchor href={ENavigationOptions.PROJECTS}>Projects</Anchor>
                 </li>
                 <li ref={contactRef}>
-                  <a href={ENavigationOptions.CONTACT}>Contact</a>
+                  <Anchor href={ENavigationOptions.CONTACT}>Contact</Anchor>
                 </li>
               </>
             )}
