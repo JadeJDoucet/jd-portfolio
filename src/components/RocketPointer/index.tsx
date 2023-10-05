@@ -72,7 +72,7 @@ const RocketPointer: React.FC<IRocketPointer> = ({
         ...prev,
         justifySelf: 'flex-end',
         left: `${navItemRect.left + ROCKET_SIZE / 6}px`,
-        top: `${navItemRect.top + ROCKET_SIZE / 2}px`,
+        top: `${navItemRect.top + ROCKET_SIZE / 3}px`,
       }));
     }
   }, [location.pathname, contactRef, projectsRef]);

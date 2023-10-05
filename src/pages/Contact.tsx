@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Text, Input, Textarea, Button } from '@mantine/core';
+import emailjs from 'emailjs-com'; // Import emailjs-com
 import classes from './Contact.module.css';
 
+// import { object, string } from 'yup';
+
+// const contactSchema = object({
+//   name: string().required(),
+//   email: string().email().required(),
+//   message: string().required(),
+// });
+
 const Contact: React.FC = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,15 +28,37 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add logic here to handle form submission
-    console.log(formData);
+
+    // TODO: process.env isnt working properly???
+    emailjs.init(process.env.REACT_APP_EMAIL_KEY ?? '');
+
+    // Send the email using emailjs-com
+    if (formRef.current) {
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_SERVICE_ID ?? '',
+          process.env.REACT_APP_TEMPLATE_ID ?? '',
+          formRef.current
+        )
+        .then(
+          () => {
+            setFormData({
+              name: '',
+              email: '',
+              message: '',
+            });
+            // TODO: Show sent notification
+          },
+          (error) => console.log('FAILED...', error)
+        );
+    }
   };
 
   return (
     <Container className={classes.contactContainer}>
       <Text className={classes.heading}>Reach out</Text>
       <div className={classes.contactForm}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={formRef}>
           <label className={classes.label} htmlFor="name">
             Name
           </label>
