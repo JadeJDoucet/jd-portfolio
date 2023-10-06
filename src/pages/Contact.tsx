@@ -1,56 +1,42 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Container, Text, Input, Textarea, Button } from '@mantine/core';
 import emailjs from 'emailjs-com'; // Import emailjs-com
 import classes from './Contact.module.css';
 
-// import { object, string } from 'yup';
+import { object, string } from 'yup';
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-// const contactSchema = object({
-//   name: string().required(),
-//   email: string().email().required(),
-//   message: string().required(),
-// });
+const contactSchema = object({
+  name: string().required('Name is required'),
+  email: string().email('Invalid email').required('Email is required'),
+  message: string().required('Message is required'),
+});
 
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+  const { handleSubmit, control, formState, reset } = useForm({
+    resolver: yupResolver(contactSchema),
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // TODO: process.env isnt working properly???
+  const onSubmit = async (data: any) => {
+    // Initialize emailjs
     emailjs.init(process.env.REACT_APP_EMAIL_KEY ?? '');
 
-    // Send the email using emailjs-com
     if (formRef.current) {
-      emailjs
-        .sendForm(
+      try {
+        await emailjs.sendForm(
           process.env.REACT_APP_SERVICE_ID ?? '',
           process.env.REACT_APP_TEMPLATE_ID ?? '',
           formRef.current
-        )
-        .then(
-          () => {
-            setFormData({
-              name: '',
-              email: '',
-              message: '',
-            });
-            // TODO: Show sent notification
-          },
-          (error) => console.log('FAILED...', error)
         );
+
+        // Reset the form and show a success message
+        reset();
+        // TODO: Show sent notification
+      } catch (error) {
+        console.error('FAILED...', error);
+      }
     }
   };
 
@@ -58,42 +44,63 @@ const Contact: React.FC = () => {
     <Container className={classes.contactContainer}>
       <Text className={classes.heading}>Reach out</Text>
       <div className={classes.contactForm}>
-        <form onSubmit={handleSubmit} ref={formRef}>
+        <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
           <label className={classes.label} htmlFor="name">
             Name
           </label>
-          <Input
-            className={classes.input}
-            type="text"
-            id="name"
+          <Controller
             name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Input
+                {...field}
+                className={classes.input}
+                type="text"
+                id="name"
+                required
+              />
+            )}
           />
+          <p className={classes.error}>{formState.errors.name?.message}</p>
+
           <label className={classes.label} htmlFor="email">
             Email
           </label>
-          <Input
-            className={classes.input}
-            type="email"
-            id="email"
+          <Controller
             name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Input
+                {...field}
+                className={classes.input}
+                type="email"
+                id="email"
+                required
+              />
+            )}
           />
+          <p className={classes.error}>{formState.errors.email?.message}</p>
+
           <label className={classes.label} htmlFor="message">
             Message
           </label>
-          <Textarea
-            className={classes.input}
-            id="message"
+          <Controller
             name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Textarea
+                {...field}
+                className={classes.input}
+                id="message"
+                required
+              />
+            )}
           />
+          <p className={classes.error}>{formState.errors.message?.message}</p>
+
           <Button className={classes.button} type="submit">
             Send Message
           </Button>

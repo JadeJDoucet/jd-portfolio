@@ -1,5 +1,13 @@
 import React from 'react';
-import { Anchor, Container, Image, Paper, Tabs, Text } from '@mantine/core';
+import {
+  Anchor,
+  Container,
+  Group,
+  Image,
+  Paper,
+  Tabs,
+  Text,
+} from '@mantine/core';
 import classes from './Projects.module.css';
 
 import PreemLogo from '../components/svgs/preem.svg';
@@ -62,70 +70,73 @@ const PROJECT_DESCRIPTIONS = {
   ),
 };
 
-const Projects: React.FC = () => {
-  return (
-    <Container className={classes.container}>
-      <Paper className={classes.contentWrapper} shadow="xl" radius="md">
-        <Tabs
-          defaultValue={EProjects.PREEM}
-          styles={{
-            tabLabel: {
-              fontSize: 20,
-              fontWeight: 600,
-            },
-          }}
-          variant="outline"
-        >
-          <Tabs.List>
-            <Tabs.Tab
-              value={EProjects.PREEM}
-              leftSection={<Image src={PreemLogo} alt="preem-company-logo" />}
-            />
-            <Tabs.Tab
-              value={EProjects.ALFI}
-              leftSection={
-                <Image
-                  src="/images/alfi.png"
-                  alt="alfi-company-logo"
-                  width="100%"
-                  height={27}
-                />
-              }
-            />
-            <Tabs.Tab
-              value={EProjects.SCANNAR}
-              leftSection={
-                <Image
-                  src="/images/scannar.png"
-                  alt="alfi-company-logo"
-                  width="100%"
-                  height={40}
-                />
-              }
-            >
-              ScannAR
-            </Tabs.Tab>
-          </Tabs.List>
+const Projects: React.FC = () => (
+  <Container className={classes.container}>
+    <Paper className={classes.contentWrapper} shadow="xl" radius="md">
+      <Tabs
+        defaultValue={EProjects.PREEM}
+        styles={{
+          tabLabel: {
+            fontSize: 20,
+            fontWeight: 600,
+          },
+          panel: {
+            marginLeft: 17,
+          },
+        }}
+        variant="outline"
+        orientation="vertical"
+      >
+        <Tabs.List>
+          <Tabs.Tab
+            className={classes.tab}
+            value={EProjects.PREEM}
+            leftSection={<Image src={PreemLogo} alt="preem-company-logo" />}
+          />
+          <Tabs.Tab
+            className={classes.tab}
+            value={EProjects.ALFI}
+            leftSection={
+              <Image src="/images/alfi.png" alt="alfi-company-logo" />
+            }
+          />
+          <Tabs.Tab
+            className={classes.tab}
+            value={EProjects.SCANNAR}
+            leftSection={<Image src="/images/scannar.png" alt="scannar-logo" />}
+          >
+            ScannAR
+          </Tabs.Tab>
+        </Tabs.List>
 
-          <Tabs.Panel value={EProjects.PREEM}>
+        <Tabs.Panel value={EProjects.PREEM}>
+          <Group mt={30} mb={10}>
             <Text className={classes.date}>Duration: Aug 2022 - Sep 2023</Text>
-            {PROJECT_DESCRIPTIONS[EProjects.PREEM]}
-          </Tabs.Panel>
+            <Anchor>View Project</Anchor>
+          </Group>
+          {PROJECT_DESCRIPTIONS[EProjects.PREEM]}
+        </Tabs.Panel>
 
-          <Tabs.Panel value={EProjects.ALFI}>
+        <Tabs.Panel value={EProjects.ALFI}>
+          <Group mt={30} mb={10}>
             <Text className={classes.date}>Duration: Aug 2022 - Feb 2021</Text>
-            <Text>{PROJECT_DESCRIPTIONS[EProjects.ALFI]}</Text>
-          </Tabs.Panel>
+            <Anchor>View Project</Anchor>
+          </Group>
+          <Text>{PROJECT_DESCRIPTIONS[EProjects.ALFI]}</Text>
+        </Tabs.Panel>
 
-          <Tabs.Panel value={EProjects.SCANNAR}>
-            {/*https://github.com/Assert-Reconceptualization*/}
+        <Tabs.Panel value={EProjects.SCANNAR}>
+          <Group mt={30} mb={10}>
             <Text className={classes.date}>Duration: Dec 2019</Text>
-            <Text>{PROJECT_DESCRIPTIONS[EProjects.SCANNAR]}</Text>
-          </Tabs.Panel>
-        </Tabs>
-      </Paper>
-    </Container>
-  );
-};
+            <Anchor href="https://github.com/Assert-Reconceptualization">
+              View Project
+            </Anchor>
+          </Group>
+          <Text>{PROJECT_DESCRIPTIONS[EProjects.SCANNAR]}</Text>
+        </Tabs.Panel>
+      </Tabs>
+    </Paper>
+  </Container>
+);
 
 export default Projects;
