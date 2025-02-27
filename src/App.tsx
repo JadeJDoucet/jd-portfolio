@@ -8,7 +8,7 @@ import { ENavigationOptions } from './types';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Layout>
         <Routes>
           <Route index element={<Home />} />
