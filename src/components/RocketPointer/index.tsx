@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useMediaQuery } from '@mantine/hooks';
 
 import rocket from '../svgs/rocket.svg';
 import styles from './RocketPointer.module.css';
@@ -9,6 +10,8 @@ const ROCKET_SIZE = 75;
 const RocketPointer = () => {
   const rocketRef = useRef<HTMLImageElement>(null);
   const location = useLocation();
+  // Hide on mobile or tablet
+  const isMobileOrTablet = useMediaQuery('(max-width: 992px)');
 
   useEffect(() => {
     const rocketElement = rocketRef.current;
@@ -23,7 +26,7 @@ const RocketPointer = () => {
       }
     };
 
-    if (location.pathname === '/') {
+    if (location.pathname === '/' && !isMobileOrTablet) {
       document.addEventListener('mousemove', handleMouseMove);
       if (rocketElement) {
         rocketElement.style.display = 'block';
@@ -34,9 +37,9 @@ const RocketPointer = () => {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [location.pathname]);
+  }, [location.pathname, isMobileOrTablet]);
 
-  if (location.pathname === '/') {
+  if (location.pathname === '/' && !isMobileOrTablet) {
     return (
       <div className={styles.rocketWrapper}>
         <img
