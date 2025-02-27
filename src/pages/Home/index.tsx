@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useRef, TouchEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { ENavigationOptions } from '../../types';
 import RocketPointer from '../../components/RocketPointer';
 import styles from './Home.module.css';
+import { useMediaQuery } from '@mantine/hooks';
 
 const Home: React.FC = () => {
+  const touchStartXRef = useRef<number>(0);
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  const avatarRef = useRef<HTMLDivElement>(null);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const swipeDistance = touchEndX - touchStartXRef.current;
+
+    if (Math.abs(swipeDistance) > 20) { // Minimum swipe distance threshold
+      const avatar = avatarRef.current;
+      if (avatar) {
+        const currentRotation = getComputedStyle(avatar).getPropertyValue('--rotate-y') || '0';
+        const newRotation = currentRotation === '180deg' ? '0' : '180deg';
+        avatar.style.setProperty('--rotate-y', newRotation);
+      }
+    }
+  };
+
   return (
     <Container>
       <RocketPointer />
@@ -39,7 +62,12 @@ const Home: React.FC = () => {
         <Grid.Col span="auto" maw="100%">
           <div className={styles.rightColumnContent}>
             <div className={styles.portraitWrapper}>
-              <div className={styles.avatar}>
+              <div
+                ref={avatarRef}
+                className={styles.avatar}
+                onTouchStart={isMobile ? handleTouchStart : undefined}
+                onTouchEnd={isMobile ? handleTouchEnd : undefined}
+              >
                 <img
                   src="/images/astronaut.png"
                   alt="portrait"

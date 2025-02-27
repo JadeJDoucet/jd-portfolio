@@ -11,6 +11,7 @@
   transform: rotateY(var(--rotate-y, 0));
   transform-origin: center;
   height: 600px;
+  touch-action: pan-y pinch-zoom;
 }
 
 .front,
@@ -129,8 +130,10 @@
   .avatar {
     max-width: 250px;
     height: 250px;
+    transform: rotateY(var(--rotate-y, 0));
   }
 
+  /* Remove the hover transform since we're using touch */
   .avatar:hover {
     transform: none;
   }
