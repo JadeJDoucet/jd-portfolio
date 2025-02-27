@@ -1,0 +1,17 @@
+.heading {
+  color: var(--mantine-color-white);
+  font-size: 3.75rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 4rem;
+  margin-bottom: 40px;
+  text-shadow: 6px 4px 10px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}

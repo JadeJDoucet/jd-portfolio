@@ -23,6 +23,7 @@ const RocketPointer: React.FC<IRocketPointer> = ({
     display: 'block',
     position: 'fixed',
     pointerEvents: 'none',
+    zIndex: 2,
   });
 
   useEffect(() => {

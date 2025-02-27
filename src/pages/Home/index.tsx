@@ -1,20 +1,20 @@
 import React from 'react';
-import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { ENavigationOptions } from '../types';
-import classes from './Home.module.css';
-/* TODO: generate rocket image with ai gen, shoot rocket up screen from bottom on button press :) */
+import { Container, Grid, Text, Button, Title } from '@mantine/core';
+import { ENavigationOptions } from '../../types';
+
+import styles from './Home.module.css';
 
 const Home: React.FC = () => {
   return (
     <Container>
       <Grid gutter="md">
-        <Grid.Col span="auto" className={classes.leftColumn}>
-          <Title order={1} className={classes.greeting}>
+        <Grid.Col span="auto" className={styles.leftColumn}>
+          <Title order={1} className={styles.greeting}>
             Welcome, Adventurer
           </Title>
           <Button
-            className={classes.button}
+            className={styles.button}
             component={Link}
             mb={20}
             radius="xl"
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
             Explore My Work
           </Button>
           <Button
-            className={classes.button}
+            className={styles.button}
             component={Link}
             radius="xl"
             size="lg"
@@ -36,18 +36,18 @@ const Home: React.FC = () => {
           </Button>
         </Grid.Col>
         <Grid.Col span="auto">
-          <div className={classes.rightColumnContent}>
-            <div className={classes.portraitWrapper}>
-              <div className={classes.avatar}>
+          <div className={styles.rightColumnContent}>
+            <div className={styles.portraitWrapper}>
+              <div className={styles.avatar}>
                 <img
                   src="/images/astronaut.png"
                   alt="portrait"
-                  className={classes.front}
+                  className={styles.front}
                 />
                 <img
-                  src="/images/space-wallpaper.png"
+                  src="/images/portfolio-profile.png"
                   alt="portrait"
-                  className={classes.back}
+                  className={styles.back}
                 />
               </div>
             </div>

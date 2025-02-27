@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
-import { Container, Text, Input, Textarea, Button } from '@mantine/core';
-import emailjs from 'emailjs-com'; // Import emailjs-com
-import classes from './Contact.module.css';
-
-import { object, string } from 'yup';
 import { Controller, useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import emailjs from 'emailjs-com';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Container, Text, Input, Textarea, Button } from '@mantine/core';
+
+import styles from './Contact.module.css';
+import globalStyles from '../../Global.module.css';
 
 const contactSchema = object({
   name: string().required('Name is required'),
@@ -41,11 +42,11 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Container className={classes.contactContainer}>
-      <Text className={classes.heading}>Reach out</Text>
-      <div className={classes.contactForm}>
+    <Container className={styles.contactContainer}>
+      <Text className={globalStyles.heading}>Reach out</Text>
+      <div className={styles.contactForm}>
         <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-          <label className={classes.label} htmlFor="name">
+          <label className={styles.label} htmlFor="name">
             Name
           </label>
           <Controller
@@ -55,16 +56,16 @@ const Contact: React.FC = () => {
             render={({ field }) => (
               <Input
                 {...field}
-                className={classes.input}
+                className={styles.input}
                 type="text"
                 id="name"
                 required
               />
             )}
           />
-          <p className={classes.error}>{formState.errors.name?.message}</p>
+          <p className={styles.error}>{formState.errors.name?.message}</p>
 
-          <label className={classes.label} htmlFor="email">
+          <label className={styles.label} htmlFor="email">
             Email
           </label>
           <Controller
@@ -74,16 +75,16 @@ const Contact: React.FC = () => {
             render={({ field }) => (
               <Input
                 {...field}
-                className={classes.input}
+                className={styles.input}
                 type="email"
                 id="email"
                 required
               />
             )}
           />
-          <p className={classes.error}>{formState.errors.email?.message}</p>
+          <p className={styles.error}>{formState.errors.email?.message}</p>
 
-          <label className={classes.label} htmlFor="message">
+          <label className={styles.label} htmlFor="message">
             Message
           </label>
           <Controller
@@ -93,15 +94,15 @@ const Contact: React.FC = () => {
             render={({ field }) => (
               <Textarea
                 {...field}
-                className={classes.input}
+                className={styles.input}
                 id="message"
                 required
               />
             )}
           />
-          <p className={classes.error}>{formState.errors.message?.message}</p>
+          <p className={styles.error}>{formState.errors.message?.message}</p>
 
-          <Button className={classes.button} type="submit">
+          <Button className={styles.button} type="submit">
             Send Message
           </Button>
         </form>

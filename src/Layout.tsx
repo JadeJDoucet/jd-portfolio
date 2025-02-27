@@ -4,6 +4,7 @@ import { Container, Text, Button, Anchor } from '@mantine/core';
 
 import RocketPointer from './components/RocketPointer';
 import { ENavigationOptions } from './types';
+
 import classes from './Layout.module.css';
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
@@ -48,10 +49,13 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
         backgroundImage: 'url(/images/space-wallpaper.png)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        minHeight: '100%',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
       }}
     >
-      <header style={{ padding: '20px 0' }}>
+      <header className={classes.header}>
         <nav>
           <ul className={classes.navMenu}>
             {location.pathname !== '/' && (

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Text, Button } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import { Container, Text, Button } from '@mantine/core';
 import { ENavigationOptions } from '../types';
 
 const NotFound: React.FC = () => {
