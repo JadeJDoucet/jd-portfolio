@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Text, Button } from '@mantine/core';
 

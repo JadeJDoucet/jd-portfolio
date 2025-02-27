@@ -1,7 +1,6 @@
-import { Anchor, Button, Group, Image, Tabs, Text } from '@mantine/core';
+import { Anchor, Button, Group, Tabs, Text } from '@mantine/core';
 import classes from '../../pages/Projects/Projects.module.css';
 
-import PreemLogo from '../svgs/preem.svg'
 import { Link } from 'react-router-dom';
 
 export enum EProjects {
