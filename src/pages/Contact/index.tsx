@@ -30,12 +30,11 @@ const Contact: React.FC = () => {
 
     if (formRef.current) {
       try {
-        // TODO: Uncomment this before deploying
-        // await emailjs.sendForm(
-        //   process.env.REACT_APP_SERVICE_ID ?? '',
-        //   process.env.REACT_APP_TEMPLATE_ID ?? '',
-        //   formRef.current
-        // );
+        await emailjs.sendForm(
+          process.env.REACT_APP_SERVICE_ID ?? '',
+          process.env.REACT_APP_TEMPLATE_ID ?? '',
+          formRef.current
+        );
 
         // Reset the form and show success message
         reset();
