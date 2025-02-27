@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import emailjs from 'emailjs-com';
@@ -16,6 +16,7 @@ const contactSchema = object({
 
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [isFlipped, setIsFlipped] = useState(false);
   const { handleSubmit, control, formState, reset } = useForm({
     resolver: yupResolver(contactSchema),
   });
@@ -26,86 +27,104 @@ const Contact: React.FC = () => {
 
     if (formRef.current) {
       try {
-        await emailjs.sendForm(
-          process.env.REACT_APP_SERVICE_ID ?? '',
-          process.env.REACT_APP_TEMPLATE_ID ?? '',
-          formRef.current
-        );
+        // TODO: Uncomment this before deploying
+        // await emailjs.sendForm(
+        //   process.env.REACT_APP_SERVICE_ID ?? '',
+        //   process.env.REACT_APP_TEMPLATE_ID ?? '',
+        //   formRef.current
+        // );
 
-        // Reset the form and show a success message
+        // Reset the form and show success message
         reset();
-        // TODO: Show sent notification
+        setIsFlipped(true);
       } catch (error) {
         console.error('FAILED...', error);
       }
     }
   };
 
+  const handleReset = () => {
+    setIsFlipped(false);
+  };
+
   return (
     <Container className={styles.contactContainer}>
       <Text className={globalStyles.heading}>Reach out</Text>
-      <div className={styles.contactForm}>
-        <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-          <label className={styles.label} htmlFor="name">
-            Name
-          </label>
-          <Controller
-            name="name"
-            control={control}
-            defaultValue=""
-            render={({ field }) => (
-              <Input
-                {...field}
-                className={styles.input}
-                type="text"
-                id="name"
-                required
-              />
-            )}
-          />
-          <p className={styles.error}>{formState.errors.name?.message}</p>
+      <div className={`${styles.contactForm} ${isFlipped ? styles.flipped : ''}`}>
+        <div className={styles.formSide}>
+          <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
+            <label className={styles.label} htmlFor="name">
+              Name
+            </label>
+            <Controller
+              name="name"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  className={styles.input}
+                  type="text"
+                  id="name"
+                  required
+                />
+              )}
+            />
+            <p className={styles.error}>{formState.errors.name?.message}</p>
 
-          <label className={styles.label} htmlFor="email">
-            Email
-          </label>
-          <Controller
-            name="email"
-            control={control}
-            defaultValue=""
-            render={({ field }) => (
-              <Input
-                {...field}
-                className={styles.input}
-                type="email"
-                id="email"
-                required
-              />
-            )}
-          />
-          <p className={styles.error}>{formState.errors.email?.message}</p>
+            <label className={styles.label} htmlFor="email">
+              Email
+            </label>
+            <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  className={styles.input}
+                  type="email"
+                  id="email"
+                  required
+                />
+              )}
+            />
+            <p className={styles.error}>{formState.errors.email?.message}</p>
 
-          <label className={styles.label} htmlFor="message">
-            Message
-          </label>
-          <Controller
-            name="message"
-            control={control}
-            defaultValue=""
-            render={({ field }) => (
-              <Textarea
-                {...field}
-                className={styles.input}
-                id="message"
-                required
-              />
-            )}
-          />
-          <p className={styles.error}>{formState.errors.message?.message}</p>
+            <label className={styles.label} htmlFor="message">
+              Message
+            </label>
+            <Controller
+              name="message"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <Textarea
+                  {...field}
+                  className={styles.input}
+                  id="message"
+                  required
+                />
+              )}
+            />
+            <p className={styles.error}>{formState.errors.message?.message}</p>
 
-          <Button className={styles.button} type="submit">
-            Send Message
+            <Button className={styles.button} type="submit">
+              Send Message
+            </Button>
+          </form>
+        </div>
+        <div className={styles.successSide}>
+          <Text size="xl" mb={20}>
+            Message Sent Successfully! 🚀
+          </Text>
+          <Text mb={30}>
+            Thank you for reaching out. I'll get back to you as soon as possible.
+          </Text>
+          <Button onClick={handleReset} className={styles.button}>
+            Send Another Message
           </Button>
-        </form>
+        </div>
       </div>
     </Container>
   );
