@@ -36,7 +36,7 @@ const Home: React.FC = () => {
             Contact Me
           </Button>
         </Grid.Col>
-        <Grid.Col span="auto">
+        <Grid.Col span="auto" maw="100%">
           <div className={styles.rightColumnContent}>
             <div className={styles.portraitWrapper}>
               <div className={styles.avatar}>
