@@ -12,8 +12,8 @@
   transition: box-shadow 0.3s ease;
   backdrop-filter: blur(8px);
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  min-height: 400px;
+  min-height: 420px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .contentWrapper a {
@@ -34,6 +34,9 @@
   font-size: 1.1rem;
   letter-spacing: 0.3px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px;
 }
 
 .description a {
@@ -84,6 +87,7 @@
 
 .tabs :global(.mantine-Tabs-tab[data-active]) {
   background: rgba(255, 255, 255, 0.15);
+  box-shadow: rgb(255, 255, 255) 0px 0px 10px
 }
 
 .tab:hover {
@@ -93,7 +97,7 @@
 }
 
 .viewLink {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: 600;
@@ -102,7 +106,7 @@
 }
 
 .viewLink:hover {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
 }
 
@@ -150,7 +154,7 @@
 
   .contentWrapper {
     padding: 16px 4px;
-    min-height: 635px;
+    min-height: 655px;
   }
 
   .tab {

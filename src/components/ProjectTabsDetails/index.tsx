@@ -65,24 +65,24 @@ const PROJECT_DESCRIPTIONS = {
 const PROJECTS = [
   {
     value: EProjects.PREEM,
-    leftSection: <Image src={PreemLogo} alt="preem-company-logo" />,
     duration: 'Aug 2022 - Sep 2023',
     viewLink: 'https://apps.apple.com/us/app/preem/id6443659970',
     description: PROJECT_DESCRIPTIONS[EProjects.PREEM],
+    viewLinkText: 'App Store',
   },
   {
     value: EProjects.ALFI,
-    leftSection: <Image src="/images/alfi.png" alt="alfi-company-logo" />,
     duration: 'Aug 2022 - Feb 2021',
-    viewLink: 'https://alfi.ai',
+    viewLink: 'https://www.linkedin.com/company/getalfi/',
     description: PROJECT_DESCRIPTIONS[EProjects.ALFI],
+    viewLinkText: 'LinkedIn',
   },
   {
     value: EProjects.SCANNAR,
-    leftSection: <Image src="/images/scannar.png" alt="scannar-logo" />,
     duration: 'Dec 2019 - Jan 2020',
     viewLink: 'https://github.com/Assert-Reconceptualization',
     description: PROJECT_DESCRIPTIONS[EProjects.SCANNAR],
+    viewLinkText: 'GitHub',
   },
 ];
 
@@ -93,7 +93,7 @@ export const ProjectTabsDetails = () =>
       <Tabs.Panel key={project.value} value={project.value} className={classes.panel}>
         <Group mb={20} justify="space-between">
           <Text className={classes.date}>{project.duration}</Text>
-          <Button component={Link} to={project.viewLink} target="_blank" className={classes.viewLink}>View Project</Button>
+          <Button component={Link} to={project.viewLink} target="_blank" className={classes.viewLink}>View on {project.viewLinkText}</Button>
         </Group>
         {project.description}
       </Tabs.Panel>

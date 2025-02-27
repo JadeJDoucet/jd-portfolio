@@ -1,9 +1,10 @@
+import emailjs from 'emailjs-com';
 import React, { useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { object, string } from 'yup';
-import emailjs from 'emailjs-com';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, Text, Input, Textarea, Button } from '@mantine/core';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 import styles from './Contact.module.css';
 import globalStyles from '../../Global.module.css';
@@ -12,12 +13,13 @@ const contactSchema = object({
   name: string().required('Name is required'),
   email: string().email('Invalid email').required('Email is required'),
   message: string().required('Message is required'),
+  turnstileToken: string().required('Please complete the captcha'),
 });
 
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isFlipped, setIsFlipped] = useState(false);
-  const { handleSubmit, control, formState, reset } = useForm({
+  const { handleSubmit, control, formState, reset, setValue } = useForm({
     resolver: yupResolver(contactSchema),
   });
 
@@ -108,6 +110,25 @@ const Contact: React.FC = () => {
               )}
             />
             <p className={styles.error}>{formState.errors.message?.message}</p>
+
+            <Controller
+              name="turnstileToken"
+              control={control}
+              defaultValue=""
+              render={() => (
+                <div style={{ marginBottom: '20px' }}>
+                  <Turnstile
+                    siteKey={process.env.REACT_APP_TURNSTILE_SITE_KEY ?? ''}
+                    onSuccess={(token) => setValue('turnstileToken', token)}
+                  />
+                  {formState.errors.turnstileToken && (
+                    <p className={styles.error}>
+                      {formState.errors.turnstileToken.message}
+                    </p>
+                  )}
+                </div>
+              )}
+            />
 
             <Button className={styles.button} type="submit">
               Send Message
