@@ -1,30 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import rocket from '../svgs/rocket.svg';
-import classes from './RocketPointer.module.css';
-import { ENavigationOptions } from '../../types';
-
-interface IRocketPointer {
-  projectsRef: React.RefObject<HTMLLIElement>;
-  contactRef: React.RefObject<HTMLLIElement>;
-}
+import styles from './RocketPointer.module.css';
 
 const ROCKET_SIZE = 75;
 
-const RocketPointer: React.FC<IRocketPointer> = ({
-  projectsRef,
-  contactRef,
-}) => {
+const RocketPointer = () => {
   const rocketRef = useRef<HTMLImageElement>(null);
   const location = useLocation();
-
-  const [style, setStyle] = useState<React.CSSProperties>({
-    display: 'block',
-    position: 'fixed',
-    pointerEvents: 'none',
-    zIndex: 2,
-  });
 
   useEffect(() => {
     const rocketElement = rocketRef.current;
@@ -33,62 +17,44 @@ const RocketPointer: React.FC<IRocketPointer> = ({
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
-      // Set the position of the rocket image to follow the cursor
       if (rocketElement) {
-        rocketElement.style.left = `${
-          mouseX - rocketElement.clientWidth / 2 + ROCKET_SIZE / 6.5
-        }px`;
-        rocketElement.style.top = `${
-          mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE / 1.5
-        }px`;
+        rocketElement.style.left = `${mouseX - rocketElement.clientWidth / 2 + ROCKET_SIZE / 6.5}px`;
+        rocketElement.style.top = `${mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE / 1.5}px`;
       }
     };
 
     if (location.pathname === '/') {
-      // Add a mousemove event listener to track cursor movement
       document.addEventListener('mousemove', handleMouseMove);
+      if (rocketElement) {
+        rocketElement.style.display = 'block';
+        rocketElement.style.position = 'fixed';
+      }
     }
 
-    // Cleanup the event listener when the component unmounts
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (
-      !location.pathname.includes(`${ENavigationOptions.CONTACT}`) &&
-      !location.pathname.includes(`${ENavigationOptions.PROJECTS}`)
-    ) {
-      setStyle((prev) => ({ ...prev }));
-    }
+  if (location.pathname === '/') {
+    return (
+      <div className={styles.rocketWrapper}>
+        <img
+          ref={rocketRef}
+          src={rocket}
+          alt="rocket-ship"
+          width={ROCKET_SIZE}
+          style={{
+            display: 'none',
+            pointerEvents: 'none',
+            zIndex: 2,
+          }}
+        />
+      </div>
+    );
+  }
 
-    let navItemRef = location.pathname.includes(`${ENavigationOptions.CONTACT}`)
-      ? contactRef
-      : projectsRef;
-
-    if (navItemRef.current) {
-      const navItemRect = navItemRef.current.getBoundingClientRect();
-      setStyle((prev) => ({
-        ...prev,
-        justifySelf: 'flex-end',
-        left: `${navItemRect.left + ROCKET_SIZE / 6}px`,
-        top: `${navItemRect.top + ROCKET_SIZE / 3}px`,
-      }));
-    }
-  }, [location.pathname, contactRef, projectsRef]);
-
-  return (
-    <div className={classes.rocketWrapper}>
-      <img
-        ref={rocketRef}
-        src={rocket}
-        alt="rocket-ship"
-        width={ROCKET_SIZE}
-        style={style}
-      />
-    </div>
-  );
+  return null;
 };
 
 export default RocketPointer;

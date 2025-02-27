@@ -25,20 +25,6 @@ const Projects: React.FC = () => {
         <Tabs
           defaultValue={EProjects.PREEM}
           className={styles.tabs}
-          styles={{
-            tabLabel: {
-              fontSize: 20,
-              fontWeight: 600,
-              transition: 'color 0.2s ease',
-            },
-            list: {
-              paddingRight: isMobile ? 0 : 28,
-              borderRight: isMobile ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
-            },
-            panel: {
-              padding: '20px 30px',
-            }
-          }}
           variant="outline"
           orientation={isMobile ? 'horizontal' : 'vertical'}
         >

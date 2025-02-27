@@ -13,6 +13,7 @@
   backdrop-filter: blur(8px);
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-height: 400px;
 }
 
 .contentWrapper a {
@@ -59,6 +60,25 @@
   margin-bottom: 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabs :global(.mantine-Tabs-tabLabel) {
+  font-size: 20px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.tabs :global(.mantine-Tabs-list) {
+  padding-right: 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabs :global(.mantine-Tabs-panel) {
+  padding: 20px 30px;
+}
+
+.tabs :global(.mantine-Tabs-tab[data-active]) {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .tab:hover {
@@ -124,7 +144,8 @@
   }
 
   .contentWrapper {
-    padding: 16px 10px;
+    padding: 16px 4px;
+    min-height: 635px;
   }
 
   .tab {
@@ -132,6 +153,12 @@
     width: 100px;
     min-width: 100px;
     margin: 4px;
+  }
+
+  .tabs :global(.mantine-Tabs-list) {
+    padding-right: 0;
+    padding-bottom: 16px;
+    border-right: none;
   }
 
   .panel {

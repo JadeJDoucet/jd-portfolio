@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { ENavigationOptions } from '../../types';
-
+import RocketPointer from '../../components/RocketPointer';
 import styles from './Home.module.css';
 
 const Home: React.FC = () => {
   return (
     <Container>
+      <RocketPointer />
       <Grid gutter="md">
         <Grid.Col span="auto" className={styles.leftColumn}>
           <Title order={1} className={styles.greeting}>

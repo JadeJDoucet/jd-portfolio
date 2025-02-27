@@ -1,15 +1,14 @@
 import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Text, Button, Anchor } from '@mantine/core';
+import { Container, Text, Button } from '@mantine/core';
 
-import RocketPointer from './components/RocketPointer';
+import NavItem from './components/NavItem';
 import { ENavigationOptions } from './types';
 
 import classes from './Layout.module.css';
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  const projectsRef = useRef<HTMLLIElement>(null);
-  const contactRef = useRef<HTMLLIElement>(null);
+  const location = useLocation();
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -17,8 +16,6 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
       behavior: 'smooth',
     });
   };
-
-  const location = useLocation();
 
   // Take the image I just downloaded with the mountains, split the second mountains to create parallax
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -60,20 +57,28 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
           <ul className={classes.navMenu}>
             {location.pathname !== '/' && (
               <>
-                <li style={{ marginRight: 20 }}>
-                  <Anchor href={ENavigationOptions.HOME}>Home</Anchor>
-                </li>
-                <li style={{ marginRight: 20 }} ref={projectsRef}>
-                  <Anchor href={ENavigationOptions.PROJECTS}>Projects</Anchor>
-                </li>
-                <li ref={contactRef}>
-                  <Anchor href={ENavigationOptions.CONTACT}>Contact</Anchor>
-                </li>
+                <NavItem
+                  href={ENavigationOptions.HOME}
+                  isActive={location.pathname === ENavigationOptions.HOME}
+                >
+                  Home
+                </NavItem>
+                <NavItem
+                  href={ENavigationOptions.PROJECTS}
+                  isActive={location.pathname.includes(ENavigationOptions.PROJECTS)}
+                >
+                  Projects
+                </NavItem>
+                <NavItem
+                  href={ENavigationOptions.CONTACT}
+                  isActive={location.pathname.includes(ENavigationOptions.CONTACT)}
+                >
+                  Contact
+                </NavItem>
               </>
             )}
           </ul>
         </nav>
-        <RocketPointer projectsRef={projectsRef} contactRef={contactRef} />
       </header>
       <main>{children}</main>
       <footer className={classes.footer}>
