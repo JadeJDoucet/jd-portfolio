@@ -19,8 +19,8 @@ const Projects: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 464px)');
 
   return (
-    <Container className={styles.container}>
-      <Text className={clsx(globalStyles.heading, styles.heading)}>My Projects</Text>
+    <Container className={clsx(styles.container, globalStyles.pageContainer)}>
+      <Text className={clsx(globalStyles.heading, styles.heading)}>Projects</Text>
       <Paper className={styles.contentWrapper} shadow="xl" radius="md">
         <Tabs
           defaultValue={EProjects.PREEM}

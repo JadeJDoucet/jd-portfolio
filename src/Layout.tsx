@@ -5,7 +5,7 @@ import { Container, Text, Button } from '@mantine/core';
 import NavItem from './components/NavItem';
 import { ENavigationOptions } from './types';
 
-import classes from './Layout.module.css';
+import styles from './Layout.module.css';
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation();
@@ -49,12 +49,12 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
       }}
     >
-      <header className={classes.header}>
+      <header className={styles.header}>
         <nav>
-          <ul className={classes.navMenu}>
+          <ul className={styles.navMenu}>
             {location.pathname !== '/' && (
               <>
                 <NavItem
@@ -81,7 +81,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
         </nav>
       </header>
       <main>{children}</main>
-      <footer className={classes.footer}>
+      <footer className={styles.footer}>
         {showScrollButton && (
           <Button size="sm" variant="gradient" my={10} onClick={scrollToTop}>
             Back to Top

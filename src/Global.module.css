@@ -9,9 +9,31 @@
   text-transform: uppercase;
 }
 
+.pageContainer {
+  margin-top: 8vh;
+  width: 85%;
+  max-width: 1200px;
+  padding-bottom: 100px;
+  flex: 1;
+}
+
+
 @media (max-width: 768px) {
   .heading {
     font-size: 2.5rem;
     line-height: 3rem;
+  }
+
+  .pageContainer {
+    width: 95%;
+    margin-top: 10vh;
+  }
+}
+
+@media (max-width: 464px) {
+  .pageContainer {
+    width: 100%;
+    margin-top: 4vh;
+    padding: 0px 0px 60px;
   }
 }

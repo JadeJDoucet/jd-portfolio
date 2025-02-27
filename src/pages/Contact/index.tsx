@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import emailjs from 'emailjs-com';
 import React, { useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -50,7 +51,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Container className={styles.contactContainer}>
+    <Container className={clsx(styles.contactContainer, globalStyles.pageContainer)}>
       <Text className={globalStyles.heading}>Reach out</Text>
       <div className={`${styles.contactForm} ${isFlipped ? styles.flipped : ''}`}>
         <div className={styles.formSide}>
