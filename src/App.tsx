@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Layout from './Layout';
+import Layout from './components/Layout';
 import { Home, Projects, Contact, NotFound } from './pages';
 import { ENavigationOptions } from './types';
 

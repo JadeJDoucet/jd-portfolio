@@ -2,8 +2,8 @@ import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, Text, Button } from '@mantine/core';
 
-import NavItem from './components/NavItem';
-import { ENavigationOptions } from './types';
+import NavItem from '../NavItem';
+import { ENavigationOptions } from '../../types';
 
 import styles from './Layout.module.css';
 
@@ -49,7 +49,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-start',
+        position: 'relative',
       }}
     >
       <header className={styles.header}>
