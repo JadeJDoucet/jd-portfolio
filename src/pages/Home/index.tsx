@@ -1,12 +1,15 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Grid, Text, Button, Title } from '@mantine/core';
-import { ENavigationOptions } from '../../types';
+import { ENavigationOptions, EPage } from '../../types';
 import RocketPointer from '../../components/RocketPointer';
 import styles from './Home.module.css';
 import { useMediaQuery } from '@mantine/hooks';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  navigateTo: (page: EPage, path: string) => void;
+}
+
+const Home: React.FC<HomeProps> = ({ navigateTo }) => {
   const isMobile = useMediaQuery('(max-width: 767px)');
   const avatarRef = useRef<HTMLDivElement>(null);
 
@@ -20,21 +23,19 @@ const Home: React.FC = () => {
           </Title>
           <Button
             className={styles.button}
-            component={Link}
             mb={20}
             radius="xl"
             size="lg"
-            to={ENavigationOptions.PROJECTS}
+            onClick={() => navigateTo(EPage.PROJECTS, ENavigationOptions.PROJECTS)}
             variant="filled"
           >
             Explore My Work
           </Button>
           <Button
             className={styles.button}
-            component={Link}
             radius="xl"
             size="lg"
-            to={ENavigationOptions.CONTACT}
+            onClick={() => navigateTo(EPage.CONTACT, ENavigationOptions.CONTACT)}
             variant="filled"
           >
             Contact Me

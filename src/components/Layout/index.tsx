@@ -1,15 +1,17 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Container, Text, Button } from '@mantine/core';
 
 import NavItem from '../NavItem';
-import { ENavigationOptions } from '../../types';
+import { ENavigationOptions, EPage } from '../../types';
 
 import styles from './Layout.module.css';
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  const location = useLocation();
+interface LayoutProps extends PropsWithChildren {
+  currentPage: EPage;
+  navigateTo: (page: EPage, path: string) => void;
+}
 
+const Layout: React.FC<LayoutProps> = ({ children, currentPage, navigateTo }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -55,23 +57,23 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
       <header className={styles.header}>
         <nav>
           <ul className={styles.navMenu}>
-            {location.pathname !== '/' && (
+            {currentPage !== EPage.HOME && (
               <>
                 <NavItem
-                  href={ENavigationOptions.HOME}
-                  isActive={location.pathname === ENavigationOptions.HOME}
+                  onClick={() => navigateTo(EPage.HOME, ENavigationOptions.HOME)}
+                  isActive={false}
                 >
                   Home
                 </NavItem>
                 <NavItem
-                  href={ENavigationOptions.PROJECTS}
-                  isActive={location.pathname.includes(ENavigationOptions.PROJECTS)}
+                  onClick={() => navigateTo(EPage.PROJECTS, ENavigationOptions.PROJECTS)}
+                  isActive={currentPage === EPage.PROJECTS}
                 >
                   Projects
                 </NavItem>
                 <NavItem
-                  href={ENavigationOptions.CONTACT}
-                  isActive={location.pathname.includes(ENavigationOptions.CONTACT)}
+                  onClick={() => navigateTo(EPage.CONTACT, ENavigationOptions.CONTACT)}
+                  isActive={currentPage === EPage.CONTACT}
                 >
                   Contact
                 </NavItem>

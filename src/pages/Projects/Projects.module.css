@@ -82,7 +82,42 @@
 
 .tabs :global(.mantine-Tabs-tab[data-active]) {
   background: rgba(255, 255, 255, 0.15);
+  position: relative;
   box-shadow: rgb(255, 255, 255) 0px 0px 10px
+}
+
+.tabs :global(.mantine-Tabs-tab[data-active])::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% {
+    clip-path: inset(0 0 95% 0);
+  }
+
+  25% {
+    clip-path: inset(0 0 0 95%);
+  }
+
+  50% {
+    clip-path: inset(95% 0 0 0);
+  }
+
+  75% {
+    clip-path: inset(0 95% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 95% 0);
+  }
 }
 
 .tab:hover {

@@ -1,8 +1,6 @@
 import { Anchor, Button, Group, Tabs, Text } from '@mantine/core';
 import classes from '../../pages/Projects/Projects.module.css';
 
-import { Link } from 'react-router-dom';
-
 export enum EProjects {
   PREEM = 'preem',
   ALFI = 'alfi',
@@ -92,7 +90,7 @@ export const ProjectTabsDetails = () =>
       <Tabs.Panel key={project.value} value={project.value} className={classes.panel}>
         <Group mb={20} justify="space-between">
           <Text className={classes.date}>{project.duration}</Text>
-          <Button component={Link} to={project.viewLink} target="_blank" className={classes.viewLink}>View on {project.viewLinkText}</Button>
+          <Button component="a" href={project.viewLink} target="_blank" className={classes.viewLink}>View on {project.viewLinkText}</Button>
         </Group>
         {project.description}
       </Tabs.Panel>

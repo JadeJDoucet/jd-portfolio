@@ -11,7 +11,7 @@
   left: 60%;
   opacity: 0;
   transition: opacity 0.3s ease;
-  animation: floatAnimation 3s ease-in-out infinite;
+  animation: floatAnimation 2s ease-in-out infinite;
 }
 
 .visible {

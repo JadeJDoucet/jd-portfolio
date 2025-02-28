@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 
 import rocket from '../svgs/rocket.svg';
@@ -9,7 +8,6 @@ const ROCKET_SIZE = 75;
 
 const RocketPointer = () => {
   const rocketRef = useRef<HTMLImageElement>(null);
-  const location = useLocation();
   // Hide on mobile or tablet
   const isMobileOrTablet = useMediaQuery('(max-width: 992px)');
 
@@ -26,38 +24,33 @@ const RocketPointer = () => {
       }
     };
 
-    if (location.pathname === '/' && !isMobileOrTablet) {
-      document.addEventListener('mousemove', handleMouseMove);
-      if (rocketElement) {
-        rocketElement.style.display = 'block';
-        rocketElement.style.position = 'fixed';
-      }
+    document.addEventListener('mousemove', handleMouseMove);
+    if (rocketElement) {
+      rocketElement.style.display = 'block';
+      rocketElement.style.position = 'fixed';
     }
+
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [location.pathname, isMobileOrTablet]);
+  }, [isMobileOrTablet]);
 
-  if (location.pathname === '/' && !isMobileOrTablet) {
-    return (
-      <div className={styles.rocketWrapper}>
-        <img
-          ref={rocketRef}
-          src={rocket}
-          alt="rocket-ship"
-          width={ROCKET_SIZE}
-          style={{
-            display: 'none',
-            pointerEvents: 'none',
-            zIndex: 2,
-          }}
-        />
-      </div>
-    );
-  }
-
-  return null;
+  return (
+    <div className={styles.rocketWrapper}>
+      <img
+        ref={rocketRef}
+        src={rocket}
+        alt="rocket-ship"
+        width={ROCKET_SIZE}
+        style={{
+          display: 'none',
+          pointerEvents: 'none',
+          zIndex: 2,
+        }}
+      />
+    </div>
+  );
 };
 
 export default RocketPointer;

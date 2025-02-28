@@ -1,20 +1,22 @@
 import React from 'react';
-import { Anchor } from '@mantine/core';
+import { Text } from '@mantine/core';
 import rocket from '../svgs/rocket.svg';
 import styles from './NavItem.module.css';
 
 interface INavItem {
-  href: string;
+  onClick: () => void;
   isActive: boolean;
   children: React.ReactNode;
 }
 
 const ROCKET_SIZE = 75;
 
-const NavItem: React.FC<INavItem> = ({ href, isActive, children }) => {
+const NavItem: React.FC<INavItem> = ({ onClick, isActive, children }) => {
   return (
     <li className={styles.navItem}>
-      <Anchor href={href}>{children}</Anchor>
+      <Text component="a" onClick={onClick} style={{ cursor: 'pointer' }}>
+        {children}
+      </Text>
       <img
         src={rocket}
         alt="rocket-indicator"

@@ -1,9 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Text, Button } from '@mantine/core';
-import { ENavigationOptions } from '../types';
+import { ENavigationOptions, EPage } from '../types';
 
-const NotFound: React.FC = () => {
+interface NotFoundProps {
+  navigateTo: (page: EPage, path: string) => void;
+}
+
+const NotFound: React.FC<NotFoundProps> = ({ navigateTo }) => {
   return (
     <Container
       size="lg"
@@ -26,8 +29,7 @@ const NotFound: React.FC = () => {
         size="xl"
         variant="gradient"
         radius="xl"
-        to={ENavigationOptions.HOME}
-        component={Link}
+        onClick={() => navigateTo(EPage.HOME, ENavigationOptions.HOME)}
       >
         Back to Home
       </Button>
