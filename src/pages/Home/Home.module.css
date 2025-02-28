@@ -1,3 +1,23 @@
+@keyframes spinAndGrow {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(1080deg);
+  }
+}
+
+@keyframes continuousSpin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
 /**
 * Avatar + Animation 
 */
@@ -34,42 +54,10 @@
   /* Adjust background color for the back of the card */
 }
 
-/* On hover, rotate the avatar to reveal the back image */
-@media (min-width: 768px) {
-  .avatar:hover {
-    transform: rotateY(180deg) !important;
-  }
-}
-
-/* Remove hover effect for mobile */
-@media (max-width: 767px) {
-  .avatar:hover {
-    transform: none;
-  }
-}
-
 .portraitWrapper {
   display: flex;
   justify-content: center;
 }
-
-/* On hover, rotate the avatar to reveal the back image */
-@media (min-width: 768px) {
-  .portraitWrapper:hover .avatar {
-    transform: rotateY(180deg);
-  }
-}
-
-/* Mobile styles */
-@media (max-width: 767px) {
-  .avatar {
-    transform: rotateY(var(--rotate-y, 0deg));
-  }
-}
-
-/**
-* Main styles
-*/
 
 .button {
   box-shadow: rgb(255, 255, 255) 0px 0px 10px;
@@ -107,16 +95,16 @@
   text-align: center;
 }
 
-@keyframes spinAndGrow {
-  0% {
-    transform: scale(0) rotate(0deg);
+/* On hover, rotate the avatar to reveal the back image */
+@media (min-width: 768px) {
+  .avatar:hover {
+    transform: rotateY(180deg) !important;
   }
 
-  100% {
-    transform: scale(1) rotate(1080deg);
+  .portraitWrapper:hover .avatar {
+    transform: rotateY(180deg);
   }
 }
-
 
 @media (max-width: 1200px) {
   .avatar {
@@ -143,12 +131,19 @@
     text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.5);
   }
 
-  .avatar {
-    max-width: 250px;
-    height: 250px;
-  }
-
   .rightColumnContent {
     margin-top: 30px;
   }
+
+  .avatar:hover {
+    transform: none;
+  }
+
+  .avatar {
+    max-width: 250px;
+    height: 250px;
+    animation: continuousSpin 5s linear infinite;
+    transform: none;
+  }
+
 }
