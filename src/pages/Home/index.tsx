@@ -1,4 +1,4 @@
-import React, { useRef, TouchEvent } from 'react';
+import React, { useRef, TouchEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { ENavigationOptions } from '../../types';
@@ -10,6 +10,7 @@ const Home: React.FC = () => {
   const touchStartXRef = useRef<number>(0);
   const isMobile = useMediaQuery('(max-width: 767px)');
   const avatarRef = useRef<HTMLDivElement>(null);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   const handleTouchStart = (e: TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
@@ -19,13 +20,8 @@ const Home: React.FC = () => {
     const touchEndX = e.changedTouches[0].clientX;
     const swipeDistance = touchEndX - touchStartXRef.current;
 
-    if (Math.abs(swipeDistance) > 20) { // Minimum swipe distance threshold
-      const avatar = avatarRef.current;
-      if (avatar) {
-        const currentRotation = getComputedStyle(avatar).getPropertyValue('--rotate-y') || '0';
-        const newRotation = currentRotation === '180deg' ? '0' : '180deg';
-        avatar.style.setProperty('--rotate-y', newRotation);
-      }
+    if (Math.abs(swipeDistance) > 10) { // Minimum swipe distance threshold
+      setIsFlipped(prev => !prev);
     }
   };
 
@@ -67,6 +63,9 @@ const Home: React.FC = () => {
                 className={styles.avatar}
                 onTouchStart={isMobile ? handleTouchStart : undefined}
                 onTouchEnd={isMobile ? handleTouchEnd : undefined}
+                style={isMobile ? {
+                  transform: `rotateY(${isFlipped ? '180deg' : '0deg'})`
+                } : undefined}
               >
                 <img
                   src="/images/astronaut.png"

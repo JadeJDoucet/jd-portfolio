@@ -7,9 +7,6 @@
   transition: transform 0.5s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
-  /* Add perspective to the container */
-  transform: rotateY(var(--rotate-y, 0));
-  transform-origin: center;
   height: 600px;
   touch-action: pan-y pinch-zoom;
 }
@@ -38,17 +35,36 @@
 }
 
 /* On hover, rotate the avatar to reveal the back image */
-.avatar:hover {
-  transform: rotateY(180deg);
+@media (min-width: 768px) {
+  .avatar:hover {
+    transform: rotateY(180deg) !important;
+  }
 }
 
-.portraitWrapper:hover {
-  --rotate-y: 180deg;
+/* Remove hover effect for mobile */
+@media (max-width: 767px) {
+  .avatar:hover {
+    transform: none;
+  }
 }
 
 .portraitWrapper {
   display: flex;
   justify-content: center;
+}
+
+/* On hover, rotate the avatar to reveal the back image */
+@media (min-width: 768px) {
+  .portraitWrapper:hover .avatar {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .avatar {
+    transform: rotateY(var(--rotate-y, 0deg));
+  }
 }
 
 /**
@@ -130,12 +146,6 @@
   .avatar {
     max-width: 250px;
     height: 250px;
-    transform: rotateY(var(--rotate-y, 0));
-  }
-
-  /* Remove the hover transform since we're using touch */
-  .avatar:hover {
-    transform: none;
   }
 
   .rightColumnContent {
