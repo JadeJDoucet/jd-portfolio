@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
               )}
             />
 
-            <Button className={styles.button} type="submit">
+            <Button className={styles.button} type="submit" loading={isLoading}>
               Send Message
             </Button>
           </form>
@@ -148,7 +148,7 @@ const Contact: React.FC = () => {
           <Text mb={30}>
             Thank you for reaching out. I'll get back to you as soon as possible.
           </Text>
-          <Button onClick={handleReset} className={styles.button} loading={isLoading}>
+          <Button onClick={handleReset} className={styles.button}>
             Send Another Message
           </Button>
         </div>
