@@ -20,11 +20,15 @@ const contactSchema = object({
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, control, formState, reset, setValue } = useForm({
     resolver: yupResolver(contactSchema),
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
     // Initialize emailjs
     emailjs.init(process.env.REACT_APP_EMAIL_KEY ?? '');
 
@@ -41,6 +45,8 @@ const Contact: React.FC = () => {
         setIsFlipped(true);
       } catch (error) {
         console.error('FAILED...', error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -142,7 +148,7 @@ const Contact: React.FC = () => {
           <Text mb={30}>
             Thank you for reaching out. I'll get back to you as soon as possible.
           </Text>
-          <Button onClick={handleReset} className={styles.button}>
+          <Button onClick={handleReset} className={styles.button} loading={isLoading}>
             Send Another Message
           </Button>
         </div>
