@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import clsx from 'clsx';
 import { Text } from '@mantine/core';
 import styles from './NavItem.module.css';
 
@@ -11,25 +12,70 @@ interface INavItem {
 const ROCKET_SIZE = 75;
 
 const NavItem: React.FC<INavItem> = ({ onClick, isActive, children }) => {
+  const [showRocket, setShowRocket] = useState(isActive);
+  const [animationState, setAnimationState] = useState<'in' | 'out' | 'stable'>(isActive ? 'stable' : 'out');
+  const prevActiveRef = useRef(isActive);
+
+  useEffect(() => {
+    // If state changed from inactive to active
+    if (!prevActiveRef.current && isActive) {
+      setShowRocket(true);
+      setAnimationState('in');
+      prevActiveRef.current = true;
+
+      // Reset animation state to stable after animation completes
+      const timer = setTimeout(() => {
+        setAnimationState('stable');
+      }, 1000); // Match this with the animation duration
+
+      return () => clearTimeout(timer);
+    }
+
+    // If state changed from active to inactive
+    if (prevActiveRef.current && !isActive) {
+      setAnimationState('out');
+      prevActiveRef.current = false;
+      // Wait for animation to complete before hiding the rocket
+      const timer = setTimeout(() => {
+        setShowRocket(false);
+      }, 1000); // Match this with the animation duration
+
+      return () => clearTimeout(timer);
+    }
+
+    prevActiveRef.current = isActive;
+  }, [isActive]);
+
   return (
     <li className={styles.navItem}>
       <Text component="a" onClick={onClick} style={{ cursor: 'pointer' }}>
         {children}
       </Text>
-      {isActive && (
+      {showRocket && (
         <div className={styles.rocketContainer}>
-          <svg className={styles.rocket} xmlns="http://www.w3.org/2000/svg" width={ROCKET_SIZE} height={ROCKET_SIZE} viewBox="-103.5 1043 1080 1080" xmlSpace="preserve">
+          <svg
+            className={clsx(
+              styles.rocket,
+              animationState === 'in' && styles.flyingIn,
+              animationState === 'out' && styles.flyingOut
+            )}
+            xmlns="http://www.w3.org/2000/svg"
+            width={ROCKET_SIZE}
+            height={ROCKET_SIZE}
+            viewBox="-103.5 1043 1080 1080"
+            xmlSpace="preserve"
+          >
             <rect width="100%" height="100%" fill="transparent" />
             <g>
               <path
-                className={styles.exhaustLine1}
+                className={clsx(styles.exhaustLine1)}
                 style={{ stroke: 'none', strokeWidth: 1, strokeDasharray: 'none', strokeLinecap: 'butt', strokeDashoffset: 0, strokeLinejoin: 'miter', strokeMiterlimit: 4, fill: '#ffb636', fillRule: 'nonzero' }}
                 vectorEffect="non-scaling-stroke"
                 transform="rotate(135 -87.078 1071.26) scale(2.59)"
                 d="M20.339 48.515a6.766 6.766 0 0 1-6.78-6.778 6.766 6.766 0 0 1 6.78-6.777c12.38 0 23.527 4.985 31.649 13.052 8.066 8.122 13.107 19.268 13.107 31.651 0 3.751-3.08 6.777-6.832 6.777a6.765 6.765 0 0 1-6.778-6.777c0-8.627-3.474-16.357-9.132-22.017-5.6-5.6-13.387-9.131-22.014-9.131z"
               />
               <path
-                className={styles.exhaustLine2}
+                className={clsx(styles.exhaustLine2)}
                 style={{ stroke: 'none', strokeWidth: 1, strokeDasharray: 'none', strokeLinecap: 'butt', strokeDashoffset: 0, strokeLinejoin: 'miter', strokeMiterlimit: 4, fill: '#ffb636', fillRule: 'nonzero' }}
                 vectorEffect="non-scaling-stroke"
                 transform="rotate(135 -87.078 1071.26) scale(2.59)"
