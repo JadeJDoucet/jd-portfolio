@@ -63,9 +63,11 @@ const Home: React.FC<HomeProps> = ({ navigateTo }) => {
             <Text
               size="lg"
               style={{
-                marginTop: 10,
+                marginTop: 20,
                 color: 'white',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                textShadow: '0 0 10px rgba(150, 120, 255, 0.7)',
+                fontWeight: 600,
+                letterSpacing: '1px'
               }}
             >
               Hi, I'm Jade Doucet
@@ -74,7 +76,10 @@ const Home: React.FC<HomeProps> = ({ navigateTo }) => {
               size="sm"
               style={{
                 color: 'white',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                textShadow: '0 0 8px rgba(150, 120, 255, 0.6)',
+                letterSpacing: '0.5px',
+                opacity: 0.9,
+                marginTop: 5
               }}
             >
               Frontend / Mobile / Full-Stack Engineer
