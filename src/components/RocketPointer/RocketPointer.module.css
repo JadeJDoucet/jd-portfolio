@@ -10,6 +10,12 @@
   /* Adjust the duration and timing */
 }
 
+@media (max-width: 768px) {
+  .rocketWrapper {
+    display: none;
+  }
+}
+
 @keyframes floatAnimation {
 
   0%,
