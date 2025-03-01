@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 
-import rocket from '../svgs/rocket.svg';
-import styles from './RocketPointer.module.css';
+import Rocket from '../Rocket';
 
 const ROCKET_SIZE = 75;
 
 const RocketPointer = () => {
-  const rocketRef = useRef<HTMLImageElement>(null);
+  const rocketRef = useRef<HTMLDivElement>(null);
   // Hide on mobile or tablet
   const isMobileOrTablet = useMediaQuery('(max-width: 992px)');
 
@@ -19,8 +18,8 @@ const RocketPointer = () => {
       const mouseY = e.clientY;
 
       if (rocketElement) {
-        rocketElement.style.left = `${mouseX - rocketElement.clientWidth / 2 + ROCKET_SIZE / 6.5}px`;
-        rocketElement.style.top = `${mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE / 1.5}px`;
+        rocketElement.style.left = `${(mouseX - rocketElement.clientWidth / 2 + ROCKET_SIZE / 6.5) - 5}px`;
+        rocketElement.style.top = `${(mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE / 1.5) + 10}px`;
       }
     };
 
@@ -37,19 +36,11 @@ const RocketPointer = () => {
   }, [isMobileOrTablet]);
 
   return (
-    <div className={styles.rocketWrapper}>
-      <img
-        ref={rocketRef}
-        src={rocket}
-        alt="rocket-ship"
-        width={ROCKET_SIZE}
-        style={{
-          display: 'none',
-          pointerEvents: 'none',
-          zIndex: 2,
-        }}
-      />
-    </div>
+    !isMobileOrTablet && (
+      <div ref={rocketRef} style={{ zIndex: 1000 }}>
+        <Rocket animationState="stable" />
+      </div>
+    ) || null
   );
 };
 
