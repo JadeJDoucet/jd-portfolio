@@ -26,3 +26,22 @@
 .header {
   padding: 20px 0px 0px;
 }
+
+.backgroundContainer {
+  background-image: url(../../../public/images/space-wallpaper.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .backgroundContainer {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+  }
+}

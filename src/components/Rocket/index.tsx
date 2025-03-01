@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import styles from './Rocket.module.css';
 
-const DEFAULT_ROCKET_SIZE = 75;
+export const DEFAULT_ROCKET_SIZE = 75;
 
 const Rocket = ({ animationState = 'stable', rocketSize = DEFAULT_ROCKET_SIZE }: { animationState: 'stable' | 'in' | 'out', rocketSize?: number }) => {
   return (

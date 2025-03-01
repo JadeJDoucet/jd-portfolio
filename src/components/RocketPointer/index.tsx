@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 
-import Rocket from '../Rocket';
-
-const ROCKET_SIZE = 75;
+import Rocket, { DEFAULT_ROCKET_SIZE } from '../Rocket';
 
 const RocketPointer = () => {
   const rocketRef = useRef<HTMLDivElement>(null);
@@ -18,8 +16,8 @@ const RocketPointer = () => {
       const mouseY = e.clientY;
 
       if (rocketElement) {
-        rocketElement.style.left = `${(mouseX - rocketElement.clientWidth / 2 + ROCKET_SIZE / 6.5) - 5}px`;
-        rocketElement.style.top = `${(mouseY - rocketElement.clientHeight / 2 + ROCKET_SIZE / 1.5) + 10}px`;
+        rocketElement.style.left = `${(mouseX - rocketElement.clientWidth / 2 + DEFAULT_ROCKET_SIZE / 6.5) - 5}px`;
+        rocketElement.style.top = `${(mouseY - rocketElement.clientHeight / 2 + DEFAULT_ROCKET_SIZE / 1.5) + 10}px`;
       }
     };
 
@@ -36,11 +34,11 @@ const RocketPointer = () => {
   }, [isMobileOrTablet]);
 
   return (
-    !isMobileOrTablet && (
+    (!isMobileOrTablet && (
       <div ref={rocketRef} style={{ zIndex: 1000 }}>
         <Rocket animationState="stable" />
       </div>
-    ) || null
+    )) || null
   );
 };
 

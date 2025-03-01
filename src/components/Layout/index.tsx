@@ -44,15 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage, navigateTo }) =>
   return (
     <Container
       fluid
-      style={{
-        backgroundImage: 'url(/images/space-wallpaper.png)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-      }}
+      className={styles.backgroundContainer}
     >
       <header className={styles.header}>
         <nav>

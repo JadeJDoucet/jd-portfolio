@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import clsx from 'clsx';
 import { Text } from '@mantine/core';
-import styles from './NavItem.module.css';
 import Rocket from '../Rocket';
+
+import styles from './NavItem.module.css';
 
 interface INavItem {
   onClick: () => void;
   isActive: boolean;
   children: React.ReactNode;
 }
-
-const ROCKET_SIZE = 75;
 
 const NavItem: React.FC<INavItem> = ({ onClick, isActive, children }) => {
   const [showRocket, setShowRocket] = useState(isActive);
@@ -48,11 +48,15 @@ const NavItem: React.FC<INavItem> = ({ onClick, isActive, children }) => {
 
   return (
     <li className={styles.navItem}>
-      <Text component="a" onClick={onClick} style={{ cursor: 'pointer' }}>
+      <Text
+        component="a"
+        onClick={onClick}
+        className={clsx(styles.navText, isActive && styles.active)}
+      >
         {children}
       </Text>
       {showRocket && (
-        <div>
+        <div className={styles.rocketContainer}>
           <Rocket animationState={animationState} />
         </div>
       )}

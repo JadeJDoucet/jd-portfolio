@@ -4,3 +4,22 @@
   flex-direction: column;
   z-index: 1000;
 }
+
+.navText {
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.active {
+  font-weight: 800;
+  transform: scale(1.25);
+}
+
+.rocketContainer {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
