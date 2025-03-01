@@ -23,17 +23,17 @@ const NavItem: React.FC<INavItem> = ({ onClick, isActive, children }) => {
             <g>
               <path
                 className={styles.exhaustLine1}
-                style={{ stroke: 'none', strokeWidth: 1, strokeDasharray: 'none', strokeLinecap: 'butt', strokeDashoffset: 0, strokeLinejoin: 'miter', strokeMiterlimit: 4, fill: '#ffb636', fillRule: 'nonzero', opacity: 1 }}
-                vectorEffect="non-scaling-stroke"
-                transform="rotate(135 -87.078 1071.26) scale(2.59)"
-                d="M25.828 61.903c6.776 0 12.268 5.492 12.268 12.266 0 6.778-5.492 12.271-12.268 12.271-6.774 0-12.268-5.492-12.268-12.271 0-6.773 5.494-12.266 12.268-12.266zM20.339 27.172c-3.754 0-6.78-3.08-6.78-6.833a6.766 6.766 0 0 1 6.78-6.778c18.26 0 34.787 7.393 46.775 19.326 11.931 11.986 19.325 28.511 19.325 46.775a6.766 6.766 0 0 1-6.777 6.777c-3.756 0-6.835-3.026-6.835-6.777 0-14.509-5.825-27.616-15.347-37.142-9.524-9.465-22.632-15.348-37.141-15.348z"
-              />
-              <path
-                className={styles.exhaustLine2}
-                style={{ stroke: 'none', strokeWidth: 1, strokeDasharray: 'none', strokeLinecap: 'butt', strokeDashoffset: 0, strokeLinejoin: 'miter', strokeMiterlimit: 4, fill: '#ffb636', fillRule: 'nonzero', opacity: 1 }}
+                style={{ stroke: 'none', strokeWidth: 1, strokeDasharray: 'none', strokeLinecap: 'butt', strokeDashoffset: 0, strokeLinejoin: 'miter', strokeMiterlimit: 4, fill: '#ffb636', fillRule: 'nonzero' }}
                 vectorEffect="non-scaling-stroke"
                 transform="rotate(135 -87.078 1071.26) scale(2.59)"
                 d="M20.339 48.515a6.766 6.766 0 0 1-6.78-6.778 6.766 6.766 0 0 1 6.78-6.777c12.38 0 23.527 4.985 31.649 13.052 8.066 8.122 13.107 19.268 13.107 31.651 0 3.751-3.08 6.777-6.832 6.777a6.765 6.765 0 0 1-6.778-6.777c0-8.627-3.474-16.357-9.132-22.017-5.6-5.6-13.387-9.131-22.014-9.131z"
+              />
+              <path
+                className={styles.exhaustLine2}
+                style={{ stroke: 'none', strokeWidth: 1, strokeDasharray: 'none', strokeLinecap: 'butt', strokeDashoffset: 0, strokeLinejoin: 'miter', strokeMiterlimit: 4, fill: '#ffb636', fillRule: 'nonzero' }}
+                vectorEffect="non-scaling-stroke"
+                transform="rotate(135 -87.078 1071.26) scale(2.59)"
+                d="M25.828 61.903c6.776 0 12.268 5.492 12.268 12.266 0 6.778-5.492 12.271-12.268 12.271-6.774 0-12.268-5.492-12.268-12.271 0-6.773 5.494-12.266 12.268-12.266zM20.339 27.172c-3.754 0-6.78-3.08-6.78-6.833a6.766 6.766 0 0 1 6.78-6.778c18.26 0 34.787 7.393 46.775 19.326 11.931 11.986 19.325 28.511 19.325 46.775a6.766 6.766 0 0 1-6.777 6.777c-3.756 0-6.835-3.026-6.835-6.777 0-14.509-5.825-27.616-15.347-37.142-9.524-9.465-22.632-15.348-37.141-15.348z"
               />
             </g>
             <g>

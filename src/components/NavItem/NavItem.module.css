@@ -40,32 +40,28 @@
 
 @keyframes exhaustVisibility1 {
 
-  0%,
-  100% {
+  0% {
     opacity: 0;
   }
 
   50% {
     opacity: 1;
   }
+
 }
 
 @keyframes exhaustVisibility2 {
 
-  0%,
-  100% {
+  0% {
     opacity: 0;
   }
 
-  25% {
-    opacity: 1;
+  25%,
+  75% {
+    opacity: 0;
   }
 
   50% {
-    opacity: 1;
-  }
-
-  75% {
     opacity: 1;
   }
 }
