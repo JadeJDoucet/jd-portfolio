@@ -5,6 +5,7 @@ import NavItem from '../NavItem';
 import { ENavigationOptions, EPage } from '../../types';
 
 import styles from './Layout.module.css';
+import Starfield from '../Starfield';
 
 interface LayoutProps extends PropsWithChildren {
   currentPage: EPage;
@@ -46,6 +47,7 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage, navigateTo }) =>
       fluid
       className={styles.backgroundContainer}
     >
+      <Starfield />
       <header className={styles.header}>
         <nav>
           <ul className={styles.navMenu}>

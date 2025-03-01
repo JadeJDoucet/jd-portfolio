@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
 
   return (
     <Container className={clsx(styles.container, globalStyles.pageContainer)}>
-      <Text className={clsx(globalStyles.heading, styles.heading)}>Projects</Text>
+      <Text className={clsx(globalStyles.heading, styles.heading)}>My Projects</Text>
       <Paper
         className={styles.contentWrapper}
         shadow="xl"

@@ -31,6 +31,10 @@
   background: rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   padding: 10px;
+  background: rgba(20, 15, 50, 0.75);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  margin-top: 10px;
 }
 
 .description a {
@@ -62,6 +66,7 @@
   margin-bottom: 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  clip-path: border-box;
 }
 
 .tabs :global(.mantine-Tabs-tabLabel) {
@@ -77,13 +82,16 @@
 
 .tabs :global(.mantine-Tabs-panel) {
   padding: 20px 30px;
-  transition: transform 0.3s ease-out;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: fadeIn 0.5s ease-out;
 }
 
 .tabs :global(.mantine-Tabs-tab[data-active]) {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(80, 60, 150, 0.4);
   position: relative;
-  box-shadow: rgb(255, 255, 255) 0px 0px 10px
+  box-shadow: 0 0 20px rgba(150, 120, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(180, 160, 255, 0.4);
+  border-radius: 12px;
 }
 
 .tabs :global(.mantine-Tabs-tab[data-active])::before {
@@ -95,29 +103,7 @@
   bottom: -2px;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 12px;
-  animation: borderRotate 4s linear infinite;
-}
-
-@keyframes borderRotate {
-  0% {
-    clip-path: inset(0 0 95% 0);
-  }
-
-  25% {
-    clip-path: inset(0 0 0 95%);
-  }
-
-  50% {
-    clip-path: inset(95% 0 0 0);
-  }
-
-  75% {
-    clip-path: inset(0 95% 0 0);
-  }
-
-  100% {
-    clip-path: inset(0 0 95% 0);
-  }
+  animation: borderRotate 4s linear infinite, cosmicPulse 3s ease-in-out infinite;
 }
 
 .tab:hover {
@@ -215,5 +201,57 @@
 
   .tabs :global(.mantine-Tabs-panel) {
     transition: transform 0.3s ease-out;
+  }
+}
+
+/*
+ * Animations
+ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes borderRotate {
+  0% {
+    clip-path: inset(0 0 95% 0);
+  }
+
+  25% {
+    clip-path: inset(0 0 0 95%);
+  }
+
+  50% {
+    clip-path: inset(95% 0 0 0);
+  }
+
+  75% {
+    clip-path: inset(0 95% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 95% 0);
+  }
+}
+
+@keyframes cosmicPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(150, 120, 255, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(180, 150, 255, 0.7);
   }
 }

@@ -20,7 +20,7 @@
   margin-top: auto;
   color: white;
   text-align: center;
-  padding: 100px 0 20px;
+  padding: 20px 0;
 }
 
 .header {
@@ -32,10 +32,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {
@@ -43,5 +44,9 @@
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center;
+  }
+
+  .header {
+    padding: 20px 0px 65px;
   }
 }

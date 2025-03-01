@@ -13,8 +13,9 @@
   margin-top: 8vh;
   width: 85%;
   max-width: 1200px;
-  padding-bottom: 100px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -26,14 +27,7 @@
 
   .pageContainer {
     width: 95%;
-    margin-top: 10vh;
-  }
-}
-
-@media (max-width: 464px) {
-  .pageContainer {
-    width: 100%;
     margin-top: 0px;
-    padding: 0px;
+    padding: 0px 0px 60px;
   }
 }
