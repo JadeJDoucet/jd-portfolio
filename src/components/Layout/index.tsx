@@ -48,10 +48,11 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage, navigateTo }) =>
       className={styles.backgroundContainer}
     >
       <Starfield />
+
       <header className={styles.header}>
         <nav>
-          <ul className={styles.navMenu}>
-            {currentPage !== EPage.HOME && (
+          {currentPage !== EPage.HOME && (
+            <ul className={styles.navMenu}>
               <>
                 <NavItem
                   onClick={() => navigateTo(EPage.HOME, ENavigationOptions.HOME)}
@@ -72,8 +73,8 @@ const Layout: React.FC<LayoutProps> = ({ children, currentPage, navigateTo }) =>
                   Contact
                 </NavItem>
               </>
-            )}
-          </ul>
+            </ul>
+          )}
         </nav>
       </header>
       <main>{children}</main>
