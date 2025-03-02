@@ -5,7 +5,6 @@ import {
   Image,
   Paper,
   Tabs,
-  Text,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -19,6 +18,7 @@ const Projects: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 464px)');
   const touchStartXRef = useRef<number>(0);
   const [activeTab, setActiveTab] = React.useState<string>(EProjects.PREEM);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleTouchStart = (e: TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
@@ -44,13 +44,13 @@ const Projects: React.FC = () => {
 
   return (
     <Container className={clsx(styles.container, globalStyles.pageContainer)}>
-      <Text className={clsx(globalStyles.heading, styles.heading)}>My Projects</Text>
       <Paper
         className={styles.contentWrapper}
         shadow="xl"
         radius="md"
         onTouchStart={isMobile ? handleTouchStart : undefined}
         onTouchEnd={isMobile ? handleTouchEnd : undefined}
+        ref={contentRef}
       >
         <Tabs
           value={activeTab}

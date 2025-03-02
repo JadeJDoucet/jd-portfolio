@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Container, Text, Input, Textarea, Button } from '@mantine/core';
+import { Container, Text, Input, Textarea, Button, Title } from '@mantine/core';
 import { Turnstile } from '@marsidev/react-turnstile';
 
 import styles from './Contact.module.css';
@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
 
   return (
     <Container className={clsx(styles.contactContainer, globalStyles.pageContainer)}>
-      <Text className={globalStyles.heading}>Reach out</Text>
+      <Title className={globalStyles.heading} order={1}>Reach out</Title>
       <div className={`${styles.contactForm} ${isFlipped ? styles.flipped : ''}`}>
         <div className={styles.formSide}>
           <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
@@ -112,6 +112,7 @@ const Contact: React.FC = () => {
                   className={styles.input}
                   id="message"
                   required
+                  minRows={4}
                 />
               )}
             />
@@ -122,7 +123,7 @@ const Contact: React.FC = () => {
               control={control}
               defaultValue=""
               render={() => (
-                <div style={{ marginBottom: '20px' }}>
+                <div style={{ marginBottom: '20px', width: '100%', display: 'flex', justifyContent: 'center' }}>
                   <Turnstile
                     siteKey={process.env.REACT_APP_TURNSTILE_SITE_KEY ?? ''}
                     onSuccess={(token) => setValue('turnstileToken', token)}
@@ -142,7 +143,7 @@ const Contact: React.FC = () => {
           </form>
         </div>
         <div className={styles.successSide}>
-          <Text size="xl" mb={20}>
+          <Text size="xl" mb={20} fw={700}>
             Message Sent Successfully! 🚀
           </Text>
           <Text mb={30}>

@@ -1,13 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .contentWrapper {
-  background: linear-gradient(45deg, rgba(20, 15, 50, 0.9), rgba(40, 30, 100, 0.9));
+  background: linear-gradient(45deg, rgba(40, 30, 100, 0.8), rgba(80, 60, 150, 0.7));
   padding: 24px 70px 24px 24px;
   color: var(--mantine-color-white);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   backdrop-filter: blur(8px);
   border-radius: 16px;
   min-height: 420px;
-  box-shadow: rgb(255, 255, 255, 0.5) 0px 0px 30px 5px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(150, 120, 255, 0.4);
+  border: 1px solid rgba(180, 160, 255, 0.2);
   touch-action: pan-y pinch-zoom;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add this for the constellation effect */
+.contentWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 30% 65%, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+    radial-gradient(circle at 60% 10%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 300px 300px;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.contentWrapper:hover {
+  box-shadow: 0 0 40px rgba(180, 150, 255, 0.6);
+  transform: translateY(-3px);
 }
 
 .contentWrapper a {
@@ -20,21 +55,35 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   opacity: 0.9;
+  background: rgba(80, 60, 150, 0.5);
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .description {
   font-weight: 500;
   line-height: 1.8;
   font-size: 1.1rem;
-  letter-spacing: 0.3px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  background: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.4px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   border-radius: 12px;
-  padding: 10px;
-  background: rgba(20, 15, 50, 0.75);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   padding: 16px;
   margin-top: 10px;
+  background: rgba(40, 30, 100, 0.7);
+  box-shadow: 0 0 15px rgba(150, 120, 255, 0.2);
+  border: 1px solid rgba(180, 160, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: cosmicEntrance 0.8s ease-out;
+  position: relative;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.description:hover {
+  box-shadow: 0 0 20px rgba(180, 150, 255, 0.4);
+  transform: translateY(-2px);
 }
 
 .description a {
@@ -49,24 +98,36 @@
   border-color: var(--mantine-color-white);
 }
 
-.heading {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .panel {
   padding: 10px 0px 20px 20px;
+  animation: floatAnimation 6s infinite ease-in-out;
 }
 
 .tab {
   height: 90px;
   width: 200px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   border-radius: 12px;
   margin-bottom: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(80, 60, 150, 0.2);
+  border: 1px solid rgba(180, 160, 255, 0.2);
   clip-path: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 10%);
+  background-size: 15px 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .tabs :global(.mantine-Tabs-tabLabel) {
@@ -84,6 +145,7 @@
   padding: 20px 30px;
   transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   animation: fadeIn 0.5s ease-out;
+  position: relative;
 }
 
 .tabs :global(.mantine-Tabs-tab[data-active]) {
@@ -92,43 +154,39 @@
   box-shadow: 0 0 20px rgba(150, 120, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(180, 160, 255, 0.4);
   border-radius: 12px;
-}
-
-.tabs :global(.mantine-Tabs-tab[data-active])::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  animation: borderRotate 4s linear infinite, cosmicPulse 3s ease-in-out infinite;
+  animation: cosmicPulse 3s infinite ease-in-out;
+  transform: translateY(-3px) scale(1.05);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .tab:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: rgba(80, 60, 150, 0.3);
+  box-shadow: 0 0 15px rgba(150, 120, 255, 0.4);
 }
 
 .viewLink {
-  background-color: rgba(0, 0, 0, 0.3);
+  background: rgba(74, 55, 183, 0.9);
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(150, 120, 255, 0.4);
+  border: 1px solid rgba(180, 160, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 .viewLink:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
+  background: rgba(40, 30, 100, 0.5);
+  box-shadow: 0 0 15px rgba(150, 120, 255, 0.4);
 }
 
 @media (max-width: 768px) {
   .contentWrapper {
     padding: 16px 20px;
+    min-height: 500px;
   }
 
   .tab {
@@ -162,8 +220,18 @@
   }
 
   .contentWrapper {
-    padding: 16px 4px;
-    min-height: 655px;
+    padding: 16px 8px;
+    min-height: 600px;
+  }
+
+  .tabs :global(.mantine-Tabs-list) {
+    padding-right: 0;
+    padding-bottom: 16px;
+    border-right: none;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 16px;
   }
 
   .tab {
@@ -173,30 +241,17 @@
     margin: 4px;
   }
 
-  .tabs :global(.mantine-Tabs-list) {
-    padding-right: 0;
-    padding-bottom: 16px;
-    border-right: none;
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  .panel {
-    padding: 15px 10px;
-    margin-top: 20px;
-  }
-
-  .description {
-    font-size: 0.9rem;
-  }
-
-  .date {
+  /* Add swipe indicator for mobile */
+  .contentWrapper::after {
+    content: '< swipe >';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
-  }
-
-  .viewLink {
-    padding: 3px 8px;
-    font-size: 0.9rem;
+    animation: fadeInOut 2s infinite;
+    opacity: 0.7;
   }
 
   .tabs :global(.mantine-Tabs-panel) {
@@ -244,14 +299,62 @@
   }
 }
 
-@keyframes cosmicPulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 15px rgba(150, 120, 255, 0.4);
+@keyframes cosmicEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+    text-shadow: 0 0 0 rgba(150, 120, 255, 0);
   }
 
   50% {
-    box-shadow: 0 0 25px rgba(180, 150, 255, 0.7);
+    text-shadow: 0 0 30px rgba(150, 120, 255, 0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    text-shadow: 0 0 15px rgba(150, 120, 255, 0.7);
+  }
+}
+
+@keyframes cosmicPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(150, 120, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    border-color: rgba(180, 160, 255, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(180, 150, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.3);
+    border-color: rgba(200, 180, 255, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 0 20px rgba(150, 120, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    border-color: rgba(180, 160, 255, 0.4);
+  }
+}
+
+@keyframes trailEffect {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Add this animation for the swipe indicator */
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.7;
   }
 }

@@ -10,14 +10,15 @@
 }
 
 .pageContainer {
-  margin-top: 8vh;
+  margin-top: 6vh;
   width: 85%;
   max-width: 1200px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 70vh;
 }
-
 
 @media (max-width: 768px) {
   .heading {
@@ -27,7 +28,8 @@
 
   .pageContainer {
     width: 95%;
-    margin-top: 0px;
+    margin-top: 2vh;
     padding: 0px 0px 60px;
+    min-height: 60vh;
   }
 }

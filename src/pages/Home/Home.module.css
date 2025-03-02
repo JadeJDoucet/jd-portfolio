@@ -101,9 +101,6 @@
   }
 }
 
-/**
-* Avatar + Animation 
-*/
 .avatar {
   width: 500px;
   height: 500px;
@@ -202,6 +199,7 @@
 }
 
 .leftColumn {
+  align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -210,14 +208,14 @@
   padding: 20px;
 }
 
-.rightColumnContent {
+.rightColumn {
   background-color: rgba(20, 15, 50, 0.6);
   backdrop-filter: blur(8px);
   margin: 30px;
   padding: 30px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 0 30px rgba(150, 120, 255, 0.3);
+  box-shadow: 0 2px 20px rgba(150, 120, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
   animation: floatAnimation 6s infinite ease-in-out;
 }
@@ -261,7 +259,7 @@
   }
 
   .container {
-    padding: 0px 10px;
+    margin: 0px 10px;
   }
 
   .button {
@@ -274,8 +272,9 @@
     margin: 0 auto 20px;
   }
 
-  .rightColumnContent {
-    margin: 30px 0px;
+  .rightColumn {
+    margin: 30px 10px;
+    box-shadow: 0 0px 4px rgba(150, 120, 255, 0.3)
   }
 
   .avatar:hover {

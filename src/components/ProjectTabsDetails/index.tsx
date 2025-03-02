@@ -69,7 +69,7 @@ const PROJECTS = [
   },
   {
     value: EProjects.ALFI,
-    duration: 'Aug 2022 - Feb 2021',
+    duration: 'Feb 2021 - Aug 2022',
     viewLink: 'https://www.linkedin.com/company/getalfi/',
     description: PROJECT_DESCRIPTIONS[EProjects.ALFI],
     viewLinkText: 'LinkedIn',

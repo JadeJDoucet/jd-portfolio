@@ -40,41 +40,39 @@ const Home: React.FC<HomeProps> = ({ navigateTo }) => {
             Contact Me
           </Button>
         </Grid.Col>
-        <Grid.Col span="auto" maw="100%">
-          <div className={styles.rightColumnContent}>
-            <div className={styles.portraitWrapper}>
-              <div
-                ref={avatarRef}
-                className={styles.avatar}
-              >
-                <img
-                  src="/images/astronaut.png"
-                  alt="portrait"
-                  className={styles.front}
-                />
-                <img
-                  src="/images/portfolio-profile.png"
-                  alt="portrait"
-                  className={styles.back}
-                />
-              </div>
+        <Grid.Col span="auto" maw="100%" className={styles.rightColumn}>
+          <div className={styles.portraitWrapper}>
+            <div
+              ref={avatarRef}
+              className={styles.avatar}
+            >
+              <img
+                src="/images/astronaut.png"
+                alt="portrait"
+                className={styles.front}
+              />
+              <img
+                src="/images/portfolio-profile.png"
+                alt="portrait"
+                className={styles.back}
+              />
             </div>
-            <Text
-              size="lg"
-              className={styles.name}
-            >
-              Hi, I'm Jade Doucet
-            </Text>
-            <Text
-              size="sm"
-              className={styles.subtext}
-            >
-              Frontend / Mobile / Full-Stack Engineer
-            </Text>
           </div>
+          <Text
+            size="lg"
+            className={styles.name}
+          >
+            Hi, I'm Jade Doucet
+          </Text>
+          <Text
+            size="sm"
+            className={styles.subtext}
+          >
+            Frontend / Mobile / Full-Stack Engineer
+          </Text>
         </Grid.Col>
       </Grid>
-    </Container>
+    </Container >
   );
 };
 
