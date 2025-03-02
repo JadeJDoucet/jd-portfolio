@@ -32,19 +32,21 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-y: auto;
+  overflow-y: visible;
   padding: 0px;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .backgroundContainer {
     min-height: 100vh;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-position: center;
+    -webkit-overflow-scrolling: touch;
   }
 
   .header {
