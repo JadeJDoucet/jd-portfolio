@@ -10,11 +10,10 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ navigateTo }) => {
-  const isMobile = useMediaQuery('(max-width: 767px)');
   const avatarRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Container>
+    <Container className={styles.container}>
       <RocketPointer />
       <Grid gutter="md">
         <Grid.Col span="auto" className={styles.leftColumn}>
@@ -62,25 +61,13 @@ const Home: React.FC<HomeProps> = ({ navigateTo }) => {
             </div>
             <Text
               size="lg"
-              style={{
-                marginTop: 20,
-                color: 'white',
-                textShadow: '0 0 10px rgba(150, 120, 255, 0.7)',
-                fontWeight: 600,
-                letterSpacing: '1px'
-              }}
+              className={styles.name}
             >
               Hi, I'm Jade Doucet
             </Text>
             <Text
               size="sm"
-              style={{
-                color: 'white',
-                textShadow: '0 0 8px rgba(150, 120, 255, 0.6)',
-                letterSpacing: '0.5px',
-                opacity: 0.9,
-                marginTop: 5
-              }}
+              className={styles.subtext}
             >
               Frontend / Mobile / Full-Stack Engineer
             </Text>

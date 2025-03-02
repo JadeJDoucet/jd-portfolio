@@ -1,5 +1,5 @@
 .contentWrapper {
-  background-color: rgba(35, 30, 75, 0.8);
+  background: linear-gradient(45deg, rgba(20, 15, 50, 0.9), rgba(40, 30, 100, 0.9));
   padding: 24px 70px 24px 24px;
   color: var(--mantine-color-white);
   transition: box-shadow 0.3s ease;
