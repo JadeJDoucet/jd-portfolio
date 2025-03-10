@@ -20,7 +20,7 @@ import globalStyles from '../../Global.module.css';
 const Projects: React.FC = () => {
   const isMobile = useMediaQuery('(max-width: 464px)');
   const touchStartXRef = useRef<number>(0);
-  const [activeTab, setActiveTab] = React.useState<string>(EProjects.PREEM);
+  const [activeTab, setActiveTab] = React.useState<string>(EProjects.MDCALC);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleTouchStart = (e: TouchEvent) => {
