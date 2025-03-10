@@ -10,7 +10,7 @@ interface HeaderProps extends PropsWithChildren {
 
 const Header = ({ currentPage, navigateTo }: HeaderProps) => {
   return (
-    currentPage !== EPage.HOME && (
+    currentPage !== EPage.HOME ? (
       <header>
         <ul className={styles.navMenu}>
           <NavItem
@@ -33,7 +33,7 @@ const Header = ({ currentPage, navigateTo }: HeaderProps) => {
           </NavItem>
         </ul>
       </header>
-    ) || <header className={styles.placeholder} />
+    ) : <header className={styles.placeholder} />
   )
 }
 

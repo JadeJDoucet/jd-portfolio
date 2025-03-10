@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { Container, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import Rocket from '../Rocket';
 
 import styles from './NavItem.module.css';
