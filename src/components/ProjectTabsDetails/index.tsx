@@ -34,36 +34,35 @@ const PROJECT_DESCRIPTIONS = {
     </>
   ),
   [EProjects.PREEM]: (
-    <Text className={classes.description}>
-      As one of three frontend / mobile engineers at this start-up, I played a
-      significant role in architecting and constructing the&nbsp;
-      <Anchor
-        href="https://apps.apple.com/us/app/preem/id6443659970"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Preem
-      </Anchor>
-      &nbsp;mobile app - as well as modifying, updating, and maintaining
-      the&nbsp;
-      <Anchor href="https://gopreem.com" target="_blank" rel="noreferrer">
-        GoPreem
-      </Anchor>
-      &nbsp;website. After starting on the Preem App in November 2022, we
-      deployed an MVP to both the iOS App Store and Google Play Store by the end
-      of the month.
-    </Text>
+    <>
+      <Text className={classes.description}>
+        As one of three frontend / mobile engineers at this start-up, I played a
+        significant role in architecting and constructing the&nbsp;
+        <Anchor
+          href="https://apps.apple.com/us/app/preem/id6443659970"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Preem
+        </Anchor>
+        &nbsp;mobile app. I built and launched a React Native application to both the iOS App Store and Google Play Store within a month of starting this greenfield project to gain user traffic and start acquiring user feedback.
+
+      </Text>
+      <Text className={classes.description}>
+        I implemented Redux API architecture with Redux Toolkit in TypeScript and React + React Native environments, establishing organized code patterns that enabled quicker ramp-up for new engineers. Additionally, I integrated Google Analytics and Crashlytics into the React Native project to allow user tracking throughout the application and supply focus areas for future product development. I also created numerous web pages and mobile screens with React and React Native based on Figma designs.
+      </Text>
+    </>
   ),
   [EProjects.ALFI]: (
-    <Text className={classes.description}>
-      AI and Machine Learning were the most interesting facets of ALFI.
-      Interfacing with APIs via React Native, React, and Kotlin enabled us to
-      use Edge Computing to push the capabilities of React Native to deliver
-      targeted ads to the correct audiences - all from the back of a rideshare.
-      Accompanying the Android application, I played a large role in various
-      iterations on the web platform where advertisers would create marketing
-      campaigns with their choice of ad targeting.
-    </Text>
+    <>
+      <Text className={classes.description}>
+        In my role at ALFI, I played a large role in system architectural decisions, UI architecture, and more. A primary focus of mine was on re-architecturing the React web platform and React Native application + Kotlin modules to significantly reduce resource consumption and improve user experience. Changes to React Native and Kotlin modules resulted in improvements to application uptime and reducing device crashes to less than 4% (previously over 40%!).
+      </Text>
+      <Text className={classes.description}>
+        I refactored a large single application context into smaller, more manageable contexts, which reduced application re-renders and improved the time between user interactions by 200-500ms.
+        Additionally, I rebuilt the legacy application into modern React using Functional Components and React Hooks, drastically reducing load times between web pages by over 450ms.
+      </Text>
+    </>
   ),
   [EProjects.SCANNAR]: (
     <Text className={classes.description}>
