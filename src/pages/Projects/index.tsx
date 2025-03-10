@@ -5,11 +5,13 @@ import {
   Image,
   Paper,
   Tabs,
+  Title,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 import { ProjectTabsDetails, EProjects } from '../../components/ProjectTabsDetails';
 import PreemLogo from '../../components/svgs/preem.svg';
+import MDCalcLogo from '../../components/svgs/mdcalc.svg';
 
 import styles from './Projects.module.css';
 import globalStyles from '../../Global.module.css';
@@ -44,6 +46,8 @@ const Projects: React.FC = () => {
 
   return (
     <Container className={clsx(styles.container, globalStyles.pageContainer)}>
+      <Title className={globalStyles.heading} order={1}>A Few Things I've done</Title>
+
       <Paper
         className={styles.contentWrapper}
         shadow="xl"
@@ -60,6 +64,11 @@ const Projects: React.FC = () => {
           orientation={isMobile ? 'horizontal' : 'vertical'}
         >
           <Tabs.List>
+            <Tabs.Tab
+              className={styles.tab}
+              value={EProjects.MDCALC}
+              leftSection={<Image src={MDCalcLogo} alt="mdcalc-company-logo" className={styles.mdcalcLogo}/>}
+            />
             <Tabs.Tab
               className={styles.tab}
               value={EProjects.PREEM}

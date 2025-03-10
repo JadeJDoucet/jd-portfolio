@@ -93,9 +93,45 @@
   border-color: var(--mantine-color-white);
 }
 
+.durationGroup {
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.mdcalcLogo {
+  max-width: 75px;
+  border-radius: 6px;
+}
+
 .panel {
   padding: 10px 0px 20px 20px;
   animation: floatAnimation 6s infinite ease-in-out;
+}
+
+.subtitle {
+  text-transform: unset;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--mantine-color-white);
+  text-shadow: 0 0 15px rgba(150, 120, 255, 0.7);
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mantine-color-white);
+  letter-spacing: 1px;
+  line-height: 1rem;
+  text-shadow: 0 0 15px rgba(150, 120, 255, 0.7);
+}
+
+.titleGroup {
+  margin-bottom: 10px;
+}
+
+.role {
+  margin-bottom: 1rem;
 }
 
 .tab {
@@ -109,6 +145,7 @@
   clip-path: border-box;
   position: relative;
   overflow: hidden;
+  justify-content: center;
 }
 
 .tab::after {
@@ -184,6 +221,11 @@
     min-height: 500px;
   }
 
+  .durationGroup {
+    flex-direction: column;
+    align-items: baseline;
+  }
+
   .tab {
     height: 60px;
     width: auto;
@@ -201,6 +243,8 @@
 
   .date {
     font-size: 0.8rem;
+    background: none;
+    padding: 0;
   }
 
   .viewLink {
