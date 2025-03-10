@@ -12,6 +12,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { ProjectTabsDetails, EProjects } from '../../components/ProjectTabsDetails';
 import PreemLogo from '../../components/svgs/preem.svg';
 import MDCalcLogo from '../../components/svgs/mdcalc.svg';
+import ScienceLogicLogo from '../../components/svgs/sciencelogic.svg';
 
 import styles from './Projects.module.css';
 import globalStyles from '../../Global.module.css';
@@ -67,7 +68,7 @@ const Projects: React.FC = () => {
             <Tabs.Tab
               className={styles.tab}
               value={EProjects.MDCALC}
-              leftSection={<Image src={MDCalcLogo} alt="mdcalc-company-logo" className={styles.mdcalcLogo}/>}
+              leftSection={<Image src={MDCalcLogo} alt="mdcalc-company-logo" className={styles.mdcalcLogo} />}
             />
             <Tabs.Tab
               className={styles.tab}
@@ -80,6 +81,12 @@ const Projects: React.FC = () => {
               leftSection={
                 <Image src="/images/alfi.png" alt="alfi-company-logo" />
               }
+            />
+            <Tabs.Tab
+              className={styles.tab}
+              value={EProjects.SCIENCELOGIC}
+              leftSection={<Image src={ScienceLogicLogo} alt="sciencelogic-company-logo" />}
+
             />
             <Tabs.Tab
               className={styles.tab}

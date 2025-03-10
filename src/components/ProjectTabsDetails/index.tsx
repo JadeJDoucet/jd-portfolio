@@ -5,6 +5,7 @@ export enum EProjects {
   MDCALC = 'mdcalc',
   PREEM = 'preem',
   ALFI = 'alfi',
+  SCIENCELOGIC = 'sciencelogic',
   SCANNAR = 'scannar',
 }
 
@@ -56,11 +57,26 @@ const PROJECT_DESCRIPTIONS = {
   [EProjects.ALFI]: (
     <>
       <Text className={classes.description}>
-        In my role at ALFI, I played a large role in system architectural decisions, UI architecture, and more. A primary focus of mine was on re-architecturing the React web platform and React Native application + Kotlin modules to significantly reduce resource consumption and improve user experience. Changes to React Native and Kotlin modules resulted in improvements to application uptime and reducing device crashes to less than 4% (previously over 40%!).
+        Starting as a Front End Engineer at ALFI, I was promoted to Senior Front End Engineer after 4 months and I played a large role in system architectural decisions, UI architecture, and more. A primary focus of mine was on re-architecturing the React web platform and React Native application + Kotlin modules to significantly reduce resource consumption and improve user experience. Changes to React Native and Kotlin modules resulted in improvements to application uptime and reducing device crashes to less than 4% (previously over 40%!).
       </Text>
       <Text className={classes.description}>
-        I refactored a large single application context into smaller, more manageable contexts, which reduced application re-renders and improved the time between user interactions by 200-500ms.
+        I refactored large single application contexts into smaller, more manageable contexts, which reduced application re-renders and improved the time between user interactions by 200-500ms.
         Additionally, I rebuilt the legacy application into modern React using Functional Components and React Hooks, drastically reducing load times between web pages by over 450ms.
+      </Text>
+      <Text className={classes.description}>
+        With the promotion to Senior Front End Engineer, I also took responsibility of mentoring and training junior engineers.
+      </Text>
+    </>
+  ),
+  [EProjects.SCIENCELOGIC]: (
+    <>
+      <Text className={classes.description}>
+        During my time at ScienceLogic, I learned a lot and honed my craft in front end engineering and development.
+        While working on their SAAS product, I modified existing various search implementations to utilize query parameters from the URL, allowing for optional data injection, enabling users to share dynamic links across their teams for quicker response times to critical issues.
+      </Text>
+      <Text className={classes.description}>
+        I also updated GraphQL queries to support incremental fetching for large data sets, which resulted in a reduction of initial loading times by over 70%.
+        Additionally, I constructed many user interfaces based on UX/UI designs using React, GraphQL, HTML, and CSS.
       </Text>
     </>
   ),
@@ -113,6 +129,16 @@ const PROJECTS = [
     viewLink: 'https://www.linkedin.com/company/getalfi/',
     description: PROJECT_DESCRIPTIONS[EProjects.ALFI],
     viewLinkText: 'LinkedIn',
+  },
+  {
+    value: EProjects.SCIENCELOGIC,
+    title: `${EProjects.SCIENCELOGIC}`,
+    subtitle: 'Previous Role',
+    role: 'Front End Engineer',
+    duration: 'Oct 2020 - Jun 2021',
+    viewLink: 'https://sciencelogic.com/software-as-a-service-trial',
+    description: PROJECT_DESCRIPTIONS[EProjects.SCIENCELOGIC],
+    viewLinkText: 'Web',
   },
   {
     value: EProjects.SCANNAR,

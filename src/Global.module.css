@@ -24,10 +24,12 @@
   .heading {
     font-size: 2.5rem;
     line-height: 3rem;
+    text-align: center;
   }
 
   .pageContainer {
-    width: 95%;
+    width: unset;
+    max-width: 95%;
     margin-top: 2vh;
     padding: 0px 0px 60px;
     min-height: 60vh;

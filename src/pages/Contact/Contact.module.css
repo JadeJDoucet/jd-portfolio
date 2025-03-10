@@ -138,9 +138,8 @@
 
 @media (max-width: 768px) {
   .contactForm {
-    max-width: 95%;
-    height: 500px;
     /* Taller on mobile */
+    height: 500px;
   }
 
   .formSide,
