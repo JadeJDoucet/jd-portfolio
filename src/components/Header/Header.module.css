@@ -15,11 +15,11 @@
   text-align: center;
 }
 
-.navMenu :nth-child(1) {
+.navMenu > :nth-child(1) {
   text-align: right;
 }
 
-.navMenu :nth-child(3) {
+.navMenu > :nth-child(3) {
   text-align: left;
 }
 
