@@ -11,7 +11,7 @@
   padding: 24px 70px 24px 24px;
   color: var(--mantine-color-white);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
   border-radius: 16px;
   min-height: 420px;
   width: 100%;

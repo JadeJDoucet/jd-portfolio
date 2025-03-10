@@ -210,7 +210,7 @@
 
 .rightColumn {
   background-color: rgba(20, 15, 50, 0.6);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
   margin: 30px;
   padding: 30px;
   border-radius: 16px;

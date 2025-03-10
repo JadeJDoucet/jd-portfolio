@@ -20,7 +20,7 @@ const StarField: React.FC = () => {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 2.5,
+        radius: Math.random(),
         opacity: Math.random(),
         speed: 0.05 + Math.random() * 0.1
       });
