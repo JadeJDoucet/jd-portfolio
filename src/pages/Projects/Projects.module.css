@@ -138,7 +138,6 @@
   margin-bottom: 12px;
   background: rgba(80, 60, 150, 0.2);
   border: 1px solid rgba(180, 160, 255, 0.2);
-  clip-path: border-box;
   position: relative;
   overflow: hidden;
   justify-content: center;
