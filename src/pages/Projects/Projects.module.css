@@ -81,11 +81,6 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
-.description:hover {
-  box-shadow: 0 0 20px rgba(180, 150, 255, 0.4);
-  transform: translateY(-2px);
-}
-
 .description a {
   color: var(--mantine-color-white);
   text-decoration: none;

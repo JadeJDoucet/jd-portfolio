@@ -8,8 +8,8 @@ import {
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
-import PreemLogo from '../../components/svgs/preem.svg';
 import { ProjectTabsDetails, EProjects } from '../../components/ProjectTabsDetails';
+import PreemLogo from '../../components/svgs/preem.svg';
 
 import styles from './Projects.module.css';
 import globalStyles from '../../Global.module.css';

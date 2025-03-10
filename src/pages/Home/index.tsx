@@ -3,7 +3,6 @@ import { Container, Grid, Text, Button, Title } from '@mantine/core';
 import { ENavigationOptions, EPage } from '../../types';
 import RocketPointer from '../../components/RocketPointer';
 import styles from './Home.module.css';
-import { useMediaQuery } from '@mantine/hooks';
 
 interface HomeProps {
   navigateTo: (page: EPage, path: string) => void;

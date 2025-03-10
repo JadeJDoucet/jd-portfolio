@@ -1,12 +1,12 @@
 .heading {
-  color: var(--mantine-color-white);
-  font-size: 3.75rem;
+  margin-bottom: 40px;
+  font-size: 4rem;
   font-weight: 900;
+  color: var(--mantine-color-white);
+  text-transform: uppercase;
   letter-spacing: 4px;
   line-height: 4rem;
-  margin-bottom: 40px;
-  text-shadow: 6px 4px 10px rgba(0, 0, 0, 0.5);
-  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(150, 120, 255, 0.7);
 }
 
 .pageContainer {
