@@ -1,25 +1,17 @@
-.navItem {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-}
-
 .navText {
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
+
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .active {
   font-weight: 800;
-  transform: scale(1.25);
-}
-
-.rocketContainer {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
+  font-size: 1.75rem;
+  text-shadow: 0 0 15px rgba(150, 120, 255, 0.7);
 }

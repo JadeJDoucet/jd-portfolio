@@ -1,0 +1,27 @@
+.navMenu {
+  display: flex;
+  list-style: none;
+  padding: 20px 0px 0px;
+  justify-content: center;
+  justify-content: space-evenly;
+  max-width: 300px;
+  margin: 0px auto;
+  gap: 20px;
+}
+
+.navMenu li {
+  width: 80px;
+  text-align: center;
+}
+
+.navMenu :nth-child(1) {
+  text-align: right;
+}
+
+.navMenu :nth-child(3) {
+  text-align: left;
+}
+
+.placeholder {
+  padding: 40px 0px;
+}

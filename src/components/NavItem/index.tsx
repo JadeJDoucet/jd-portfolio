@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { Text } from '@mantine/core';
+import { Container, Text } from '@mantine/core';
 import Rocket from '../Rocket';
 
 import styles from './NavItem.module.css';
@@ -47,7 +47,7 @@ const NavItem: React.FC<INavItem> = ({ onClick, isActive, children }) => {
   }, [isActive]);
 
   return (
-    <li className={styles.navItem}>
+    <li>
       <Text
         component="a"
         onClick={onClick}
